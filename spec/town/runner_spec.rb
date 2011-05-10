@@ -7,14 +7,27 @@ module Town
 
       before(:each) do
         @messenger = mock("messenger").as_null_object
-        @runner = Runner.new(@messenger)
+        @clock = mock("clock").as_null_object
+        @runner = Runner.new(@messenger, @clock, 
+                             :seconds_to_run => 1, :sleep_time => 0)
       end
 
       it "should send a welcome message" do
         @messenger.should_receive(:puts).with("Welcome to the Town!")
         @runner.start
       end
-      
+
+      it "should tick the clock" do
+        @clock.should_receive(:tick)
+        @runner.start
+      end
+
+      it "should tick the clock 5 times for 5 seconds" do
+        @runner.seconds_to_run = 5
+        @clock.should_receive(:tick).at_least(5).times
+        @runner.start
+      end
+
     end
 
   end
