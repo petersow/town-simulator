@@ -1,9 +1,10 @@
-require 'clock'
+require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
+require 'town/clock'
 
-describe Clock do
+describe Town::Clock do
 
   before(:each) do
-    @clock = Clock.new
+    @clock = Town::Clock.new
   end
 
   it "has a year variable" do
