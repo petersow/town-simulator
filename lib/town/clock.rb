@@ -1,42 +1,61 @@
 module Town
   class Clock
-    attr_reader :year, :month, :day, :hour, :minute
-  
+
     YEAR_INIT = 1
     MONTH_INIT = 1 
     DAY_INIT = 1
     HOUR_INIT = 0
     MINUTE_INIT = 0
-
+  
     def initialize
-      @year = YEAR_INIT
-      @month = MONTH_INIT
-      @day = DAY_INIT
-      @hour = HOUR_INIT
-      @minute = MINUTE_INIT
+      @time = Town::Time.new
     end
 
-    def time 
+    def year
+      @time.year
+    end
+  
+    def month
+      @time.month
+    end
+
+    def day
+      @time.day
+    end
+
+    def hour
+      @time.hour
+    end
+
+    def minute
+      @time.minute
+    end
+
+    def time
+      @time.clone
+    end
+
+    def to_s
       "#{pad(hour)}:#{pad(minute)} #{pad(day)}/#{pad(month)}/#{year}"
     end
 
     def tick
-      @minute += 1
-      if @minute > 59
-        @minute = MINUTE_INIT
-        @hour += 1
+      @time.minute += 1
+      if @time.minute > 59
+        @time.minute = MINUTE_INIT
+        @time.hour += 1
       end
-      if @hour > 23
-        @hour = HOUR_INIT
-        @day += 1
+      if @time.hour > 23
+        @time.hour = HOUR_INIT
+        @time.day += 1
       end
-      if @day > 30
-        @day = DAY_INIT
-        @month += 1
+      if @time.day > 30
+        @time.day = DAY_INIT
+        @time.month += 1
       end
-      if @month > 12
-        @month = MONTH_INIT
-        @year += 1
+      if @time.month > 12
+        @time.month = MONTH_INIT
+        @time.year += 1
       end
     end
 

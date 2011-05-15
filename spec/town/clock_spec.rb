@@ -6,6 +6,23 @@ module Town
       @clock = Town::Clock.new
     end
 
+    it "has a time variable" do
+      @clock.time.should_not be_nil
+    end
+
+    it "has a time variable of type Town::Time" do
+      @clock.time.should be_is_a Town::Time
+    end
+
+    it "should not persist changes to time's variables" do
+       @clock.time.day = 8
+       @clock.time.day.should_not eql 8
+    end
+
+    it "should not let year be set" do
+      lambda{@clock.time = Town::Time.new}.should raise_error 
+    end
+
     it "has a year variable" do
       @clock.year.should_not be_nil
     end
@@ -50,7 +67,7 @@ module Town
       @clock.hour.should eql 0
     end
 
-    it " should not let hour be set" do
+    it "should not let hour be set" do
       lambda{@clock.hour = 1}.should raise_error 
     end
 
@@ -66,8 +83,8 @@ module Town
       lambda{@clock.minute = 1}.should raise_error 
     end
 
-    it "has a getter for the current time" do
-      @clock.time.should_not be_nil
+    it "has overridden to_s" do
+      @clock.to_s.should eql "00:00 01/01/1"
     end
 
     it "should tick and update the minute" do
