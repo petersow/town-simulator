@@ -61,7 +61,7 @@ module Town
       @location.z.should eql 1000
     end
 
-    it "should let me set x, y and z while creating" do
+    it "should let x, y and z be set while creating" do
       location = Location.new(:x => 1, :y => 2, :z => 3)
       location.x.should eql 1
       location.y.should eql 2

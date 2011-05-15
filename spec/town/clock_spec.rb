@@ -14,7 +14,7 @@ describe Town::Clock do
     @clock.year.should eql 1
   end
 
-  it "doesn't let you set the year variable" do
+  it "should not let year be set" do
     lambda{@clock.year = 1}.should raise_error 
   end
 
