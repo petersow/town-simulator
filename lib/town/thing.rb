@@ -1,3 +1,5 @@
+require 'securerandom'
+
 module Town
   class Thing
     attr_reader :t_id

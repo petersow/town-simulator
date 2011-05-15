@@ -1,8 +1,6 @@
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
-require 'securerandom'
 
 module Town
-
   describe Thing do
 
     before(:each) do
