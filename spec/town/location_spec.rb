@@ -15,6 +15,11 @@ module Town
       @location.x.should eql 0
     end
 
+    it "should let me set x while creating" do
+      location = Location.new(:x => 7)
+      location.x.should eql 7
+    end
+
     it "variable x should be read and writeable" do
       @location.x = 1000
       @location.x.should eql 1000
@@ -26,6 +31,11 @@ module Town
 
     it "the variable y defaults to 0" do
       @location.y.should eql 0
+    end
+
+    it "should let me set y while creating" do
+      location = Location.new(:y => 7)
+      location.y.should eql 7
     end
 
     it "variable y should be read and writeable" do
@@ -41,9 +51,21 @@ module Town
       @location.z.should eql 0
     end
 
+    it "should let me set z while creating" do
+      location = Location.new(:z => 7)
+      location.z.should eql 7
+    end
+
     it "variable z should be read and writeable" do
       @location.z = 1000
       @location.z.should eql 1000
+    end
+
+    it "should let me set x, y and z while creating" do
+      location = Location.new(:x => 1, :y => 2, :z => 3)
+      location.x.should eql 1
+      location.y.should eql 2
+      location.z.should eql 3
     end
   end
 end
