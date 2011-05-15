@@ -44,6 +44,9 @@ module Town
       @person.date_of_birth.should_not be_nil
     end
 
-  end
+    it "should have a date of birth that is of type Town::Time.new" do
+      @person.date_of_birth.should be_is_a Town::Time
+    end
 
+  end
 end
