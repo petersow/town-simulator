@@ -1,1 +1,7 @@
 A ruby library to simulate a town.
+
+Requires ruby 1.9.2
+
+Run rspec spec to check everythings working on your machine.
+
+Run ./bin/town to run example use of library.
