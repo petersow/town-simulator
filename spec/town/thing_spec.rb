@@ -44,9 +44,23 @@ module Town
       thing.location.x.should eql 100
     end
 
+    it "has a current action" do
+      @thing.current_action.should_not be_nil
+    end
+
+    it "has an current action of type Town::Action" do
+      @thing.current_action.should be_is_a Action
+    end
+
+    it "should default current action to Idle" do
+      @thing.current_action.name.should eql "Idle"
+    end
+
+    it "should let the current action be changed" do
+      old_id = @thing.current_action.a_id
+      @thing.current_action = Action.new(:name => "Walking")
+      @thing.current_action.a_id.should_not eql old_id
+    end
 
   end
-
-  
-
 end
