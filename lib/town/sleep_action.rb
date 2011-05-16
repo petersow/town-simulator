@@ -9,5 +9,16 @@ module Town
     def to_s 
       "Sleeping"
     end
+
+    def is_finished?
+      # If thing is a person and its his awake time then you're finished
+      return false
+    end
+
+    def next_action(thing)
+      # If its time to work then go work
+      self
+    end
+
   end
 end

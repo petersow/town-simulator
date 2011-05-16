@@ -23,5 +23,14 @@ module Town
       @sleep_action.type.should eql "passive"
     end
 
+    # For now
+    it "should return false for is_finished?" do
+      @sleep_action.should_not be_is_finished
+    end
+
+    it "should return sleeping action for next_action" do
+      @sleep_action.next_action(Person.new).should be_is_a SleepAction 
+    end
+
   end
 end

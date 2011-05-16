@@ -76,5 +76,8 @@ module Town
       lambda{@action.is_finished?}.should raise_error NotImplementedError 
     end
 
+    it "should have an abstract method of next_action" do
+      lambda{@action.next_action(Thing.new)}.should raise_error NotImplementedError 
+    end
   end
 end

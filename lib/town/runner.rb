@@ -32,6 +32,9 @@ module Town
                           "(#{person.location.x},#{person.location.y}," +
                           "#{person.location.z})"
           @messenger.puts "#{person.first_name} #{person.family_name} is #{person.current_action}."
+          if person.current_action.is_finished?
+            person.current_action = person.current_action.next_action(person)
+          end
         end
 
 	sleep @options[:sleep_time] ||= 1
