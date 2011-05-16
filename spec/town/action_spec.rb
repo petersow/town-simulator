@@ -39,5 +39,38 @@ module Town
       action.name.should eql "Running"
     end
 
+    it "should have a type" do
+      @action.type.should_not be_nil
+    end
+
+    it "should default type to passive" do
+      @action.type.should eql "passive"
+    end
+  
+    it "should let type be set to active at creation" do
+      active_action = Action.new(:type => "active")
+      active_action.type.should eql "active"
+    end
+
+    it "should not let type be anything but active or passive at creation" do
+      lambda{Action.new(:type => "aaaaaaaa")}.should raise_error 
+      lambda{Action.new(:type => "")}.should raise_error 
+    end
+   
+    it "should let type be set to passive" do
+      lambda{@action.type = "passive"}.should_not raise_error 
+      @action.type.should eql "passive"
+    end
+
+    it "should let type be set to active" do
+      lambda{@action.type = "active"}.should_not raise_error 
+      @action.type.should eql "active"
+    end
+
+    it "should not let type be anything other than active or passive" do
+      lambda{@action.type = "aaaaaaaa"}.should raise_error 
+      lambda{@action.type = ""}.should raise_error 
+    end
+
   end
 end
