@@ -53,7 +53,7 @@ module Town
     end
 
     it "should default current action to Idle" do
-      @thing.current_action.name.should eql "Idle"
+      @thing.current_action.should be_is_a IdleAction
     end
 
     it "should let the current action be changed" do
