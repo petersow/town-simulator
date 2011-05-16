@@ -11,7 +11,7 @@ module Town
       @thing.t_id.should_not be_nil
     end
 
-    it "has a uniqute t_id" do
+    it "has a unique t_id" do
       things = []
       1000.times do
         things << Thing.new
