@@ -15,6 +15,10 @@ module Town
       @idle_action.name.should eql "Idle"
     end
 
+    it "should have a to_s of Idle" do
+      @idle_action.to_s.should eql "Idle"
+    end
+
     it "should have a type of passive" do
       @idle_action.type.should eql "passive"
     end
