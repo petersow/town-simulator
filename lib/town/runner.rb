@@ -31,7 +31,7 @@ module Town
           @messenger.puts "#{person.first_name} #{person.family_name} is at " +
                           "(#{person.location.x},#{person.location.y}," +
                           "#{person.location.z})"
-          @messenger.puts "#{person.first_name} #{person.family_name} is #{person.current_action.name}."
+          @messenger.puts "#{person.first_name} #{person.family_name} is #{person.current_action}."
         end
 
 	sleep @options[:sleep_time] ||= 1
