@@ -72,5 +72,9 @@ module Town
       lambda{@action.type = ""}.should raise_error 
     end
 
+    it "should have an abstract method of is_finished?" do
+      lambda{@action.is_finished?}.should raise_error NotImplementedError 
+    end
+
   end
 end

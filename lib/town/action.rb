@@ -19,6 +19,10 @@ module Town
       @type = check_type(type)
     end
 
+    def is_finished?
+      raise NotImplementedError 
+    end
+
     protected
 
     def check_type(type)
@@ -27,5 +31,6 @@ module Town
       end
       type
     end
+
   end
 end
