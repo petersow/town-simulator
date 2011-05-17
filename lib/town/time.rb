@@ -15,5 +15,12 @@ module Town
       @hour = options[:hour] ||= HOUR_INIT
       @minute = options[:minute] ||=  MINUTE_INIT
     end
+
+    def Time.check_hour(hour)
+      if hour > 23 or hour < 0
+        raise ArgumentError
+      end
+      hour
+    end
   end
 end
