@@ -32,6 +32,26 @@ module Town
     it "should have next_action return IdleAction by default" do
       @action_generator.next_action(@person).should be_is_a IdleAction
     end
+  
+    context "bed time" do
+  
+      before(:each) do
+        @person.bedtime_hour = 4
+        @three = Time.new(:hour => 3)
+        @four = Time.new(:hour => 4)
+        @action_generator.time = @three
+      end
+
+      it "should have next_action return IdleAction if it is before." do
+        @action_generator.next_action(@person).should be_is_a IdleAction
+      end
+
+      it "should have next_action return SleepAction if it is after." do
+        @action_generator.time = @four
+        @action_generator.next_action(@person).should be_is_a SleepAction
+      end
+
+    end
 
   end
 end

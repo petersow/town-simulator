@@ -12,6 +12,9 @@ module Town
         raise ArgumentError
       end
       if thing.is_a? Person
+        if @time.hour >= thing.bedtime_hour
+          return SleepAction.new
+        end
         return IdleAction.new
       end
     end
