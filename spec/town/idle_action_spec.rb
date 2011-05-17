@@ -26,9 +26,5 @@ module Town
     it "should return true for is_finished?" do
       @idle_action.should be_is_finished
     end
-
-    it "should return sleeping action for next_action" do
-      @idle_action.next_action(Person.new).should be_is_a SleepAction 
-    end
   end
 end

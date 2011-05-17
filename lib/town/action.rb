@@ -23,11 +23,6 @@ module Town
       raise NotImplementedError 
     end
 
-    def next_action(thing)
-      raise NotImplementedError 
-    end
-
-
     protected
 
     def check_type(type)

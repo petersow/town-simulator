@@ -18,6 +18,8 @@ module Town
 
       @people << Person.new(:first_name => "Pete",
                             :family_name => "Sowerbutts")
+
+      @action_generator = ActionGenerator.new
     end 
  
     def start 
@@ -33,7 +35,7 @@ module Town
                           "#{person.location.z})"
           @messenger.puts "#{person.first_name} #{person.family_name} is #{person.current_action}."
           if person.current_action.is_finished?
-            person.current_action = person.current_action.next_action(person)
+            person.current_action = @action_generator.next_action(person)
           end
         end
 

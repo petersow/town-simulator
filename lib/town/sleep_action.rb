@@ -15,10 +15,5 @@ module Town
       return false
     end
 
-    def next_action(thing)
-      # If its time to work then go work
-      self
-    end
-
   end
 end
