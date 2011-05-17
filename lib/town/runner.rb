@@ -17,7 +17,8 @@ module Town
       @people = []
 
       @people << Person.new(:first_name => "Pete",
-                            :family_name => "Sowerbutts")
+                            :family_name => "Sowerbutts",
+                            :bedtime_hour => 1)
 
       @action_generator = ActionGenerator.new
     end 
@@ -27,6 +28,7 @@ module Town
 
       while not @seconds_to_run.eql?(0) do
         @clock.tick
+        @action_generator.time = @clock.time
         @messenger.puts "#{@clock.to_s}\n"
 
         @people.each do |person|
