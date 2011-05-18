@@ -21,6 +21,7 @@ module Town
                             :bedtime_hour => 1)
 
       @action_generator = ActionGenerator.new
+      @options[:sleep_time] = 0.05
     end 
  
     def start 
@@ -32,13 +33,13 @@ module Town
         @messenger.puts "#{@clock.to_s}\n"
 
         @people.each do |person|
+          if person.current_action.is_finished?
+            person.current_action = @action_generator.next_action(person)
+          end
           @messenger.puts "#{person.first_name} #{person.family_name} is at " +
                           "(#{person.location.x},#{person.location.y}," +
                           "#{person.location.z})"
           @messenger.puts "#{person.first_name} #{person.family_name} is #{person.current_action}."
-          if person.current_action.is_finished?
-            person.current_action = @action_generator.next_action(person)
-          end
         end
 
 	sleep @options[:sleep_time] ||= 1
