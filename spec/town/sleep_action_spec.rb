@@ -24,8 +24,8 @@ module Town
     end
 
     # For now
-    it "should return false for is_finished?" do
-      @sleep_action.should_not be_is_finished
+    it "should return true for is_finished?" do
+      @sleep_action.should be_is_finished
     end
 
   end

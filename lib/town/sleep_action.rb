@@ -12,7 +12,7 @@ module Town
 
     def is_finished?
       # If thing is a person and its his awake time then you're finished
-      return false
+      return true
     end
 
   end
