@@ -82,5 +82,39 @@ module Town
       lambda{Person.new(:bedtime_hour => 25)}.should raise_error ArgumentError
     end
 
+    it "should have a wake_up_hour" do
+      @person.wake_up_hour.should_not be_nil
+    end
+
+    it "should default wake_up_hour to 7" do
+      @person.wake_up_hour.should eql 7
+    end
+
+    it "should let wake_up_hour be changed" do
+      @person.wake_up_hour = 12
+      @person.wake_up_hour.should eql 12
+    end
+
+    it "should check wake_up_hour is <= 23" do
+      lambda{@person.wake_up_hour = 24}.should raise_error ArgumentError
+    end
+
+    it "should check wake_up_hour is >= 0" do
+      lambda{@person.wake_up_hour = -1}.should raise_error ArgumentError
+    end
+
+    it "should let wake_up_hour be set at creation" do
+      early_riser = Person.new(:wake_up_hour => 5)
+      early_riser.wake_up_hour.should eql 5
+    end
+
+    it "should check wake_up_hour is >= 0 at creation" do
+      lambda{Person.new(:wake_up_hour => -2)}.should raise_error ArgumentError
+    end
+
+    it "should check wake_up_hour is <= 23 at creation" do
+      lambda{Person.new(:wake_up_hour => 25)}.should raise_error ArgumentError
+    end
+
   end
 end
