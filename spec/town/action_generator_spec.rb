@@ -126,6 +126,20 @@ module Town
           @action_generator.time = @ten
           @action_generator.next_action(@person).should be_is_a WakeAction
         end
+
+        it "should be waking up for 5 minutes" do 
+          @action_generator.time = @ten
+          5.times do
+            @action_generator.time.minute += 1
+            action =  @action_generator.next_action(@person)
+            action.should be_is_a WakeAction
+            @person.current_action = action
+          end
+          @action_generator.time.minute += 1
+          action =  @action_generator.next_action(@person)
+          action.should_not be_is_a WakeAction
+          @person.current_action = action
+        end
       end
     end
   end

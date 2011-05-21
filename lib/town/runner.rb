@@ -33,9 +33,7 @@ module Town
         @messenger.puts "#{@clock.to_s}\n"
 
         @people.each do |person|
-          if person.current_action.is_finished?
-            person.current_action = @action_generator.next_action(person)
-          end
+          person.current_action = @action_generator.next_action(person)
           @messenger.puts "#{person.first_name} #{person.family_name} is at " +
                           "(#{person.location.x},#{person.location.y}," +
                           "#{person.location.z})"

@@ -12,7 +12,14 @@ module Town
         raise ArgumentError
       end
       if thing.is_a? Person
-        if thing.current_action.is_a? SleepAction
+        if thing.current_action.is_a? WakeAction
+          thing.current_action.step
+          if thing.current_action.is_finished?
+            return IdleAction.new
+          else
+            return thing.current_action
+          end
+        elsif thing.current_action.is_a? SleepAction
           if @time.hour >= thing.wake_up_hour
             return WakeAction.new
           end
