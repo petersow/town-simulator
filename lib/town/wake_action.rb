@@ -5,7 +5,7 @@ module Town
 
     def initialize
       super(:name => "Wake",
-            :type => "passive")
+            :type => "active")
       @time_remaining = 5
     end
 

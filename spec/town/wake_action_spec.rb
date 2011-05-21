@@ -19,8 +19,8 @@ module Town
       @wake_action.to_s.should eql "Waking up"
     end
 
-    it "should have a type of passive" do
-      @wake_action.type.should eql "passive"
+    it "should have a type of active" do
+      @wake_action.type.should eql "active"
     end
    
     it "should have a time_remaining" do
