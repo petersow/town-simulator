@@ -22,9 +22,31 @@ module Town
     it "should have a type of passive" do
       @wake_action.type.should eql "passive"
     end
+   
+    it "should have a time_remaining" do
+      @wake_action.time_remaining.should_not be_nil
+    end
 
-    it "should return true for is_finished?" do
+    it "should default time_remaining to 5" do
+      @wake_action.time_remaining.should eql 5
+    end
+
+    it "should return true for is_finished? if time_remaining is 0 or below" do
+      @wake_action.time_remaining = 0
       @wake_action.should be_is_finished
+      @wake_action.time_remaining = -1
+      @wake_action.should be_is_finished
+    end
+
+    it "should return false for is_finished? if time_remaining is above 0" do
+      @wake_action.time_remaining = 1
+      @wake_action.should_not be_is_finished
+    end
+
+    it "should decrement time_remaining by 1 for step" do
+      @wake_action.time_remaining = 4
+      @wake_action.step
+      @wake_action.time_remaining.should eql 3
     end
   end
 end
