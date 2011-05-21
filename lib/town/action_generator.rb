@@ -22,7 +22,7 @@ module Town
         elsif thing.current_action.is_a? WakeAction
           thing.current_action.step
           if thing.current_action.is_finished?
-            return EatAction.new
+            return EatAction.new(:meal_name => "Breakfast")
           else
             return thing.current_action
           end

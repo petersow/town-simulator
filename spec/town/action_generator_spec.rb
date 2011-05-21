@@ -140,16 +140,26 @@ module Town
           action.should_not be_is_a WakeAction
           @person.current_action = action
         end
+   
+        context "and eating breakfast" do
 
-        it "should go to EatAction after waking up" do
-          @action_generator.time = @ten
-          5.times do
+          before(:each) do
+            @action_generator.time = @ten
+            5.times do
+              @action_generator.time.minute += 1
+              @person.current_action =  @action_generator.next_action(@person)
+            end
             @action_generator.time.minute += 1
-            @person.current_action =  @action_generator.next_action(@person)
+            @action =  @action_generator.next_action(@person)
           end
-          @action_generator.time.minute += 1
-          action =  @action_generator.next_action(@person)
-          action.should be_is_a EatAction
+
+          it "should go to EatAction after waking up" do
+            @action.should be_is_a EatAction
+          end
+ 
+          it "should have the meal name be Breakfast" do
+            @action.meal_name.should eql "Breakfast"
+          end
         end
       end
     end
