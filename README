@@ -5,3 +5,10 @@ Requires ruby 1.9.2
 Run rspec spec to check everythings working on your machine.
 
 Run ./bin/town to run example use of library.
+
+Or to install the library as a gem for use with other projects do the following
+
+rake
+gem install pkg/town-core-0.0.1.gem
+
+now running "town" on your box should start the example run.
