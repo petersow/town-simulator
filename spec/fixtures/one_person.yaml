@@ -1,0 +1,6 @@
+person_one:
+  first_name: Stick
+  family_name: Boy
+  date_of_birth: 00:00 01/01/1
+  bedtime_hour: 22
+  wake_up_hour: 8

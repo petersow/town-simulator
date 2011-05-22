@@ -8,23 +8,37 @@ module Town
 
     FOREVER = -1
 
-    def initialize(messenger, options = {})
-      @messenger = messenger
+    def initialize(options = {})
+      @messenger = options[:messenger]
       @clock = options[:clock] ||= Clock.new
       @seconds_to_run = options[:seconds_to_run] ||= FOREVER
       @options = options
    
       @people = []
 
-      @people << Person.new(:first_name => "Pete",
-                            :family_name => "Sowerbutts",
-                            :bedtime_hour => 1)
+      if options[:people_config]
+        options[:people_config].each_value do |person|
+          new_person = Person.new
+          person.each_pair do |key, value|
+            #Date of birth isnt allowed to be set
+            begin 
+              new_person.send "#{key}=", value
+            rescue
+            end
+          end
+          @people << new_person
+        end
+      else 
+        @people << Person.new(:first_name => "Pete",
+                              :family_name => "Sowerbutts",
+                              :bedtime_hour => 1)
+        @people.first.job = JobRole.new(:name => "Fisher")
+      end
 
       @action_generator = ActionGenerator.new
       @options[:sleep_time] = 0.05
       @options[:output_format] = options[:output_format] ||= "text"
 
-      @people.first.job = JobRole.new(:name => "Fisher")
     end 
  
     def start 
