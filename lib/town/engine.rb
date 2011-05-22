@@ -14,8 +14,8 @@ module Town
       @seconds_to_run = options[:seconds_to_run] ||= FOREVER
       @options = options
    
-      @people = init_people(options[:people_config])
       @places = init_places(options[:places_config])
+      @people = init_people(options[:people_config])
 
       @action_generator = ActionGenerator.new
       @options[:sleep_time] = 0.05
@@ -75,7 +75,8 @@ module Town
         result << Person.new(:first_name => "Pete",
                               :family_name => "Sowerbutts",
                               :bedtime_hour => 1)
-        result.first.job = JobRole.new(:name => "Fisher")
+        result.first.job = JobRole.new(:name => "Fisher", 
+                                       :place => @places.first)
       end
       result
     end
@@ -100,7 +101,7 @@ module Town
           result << new_place
         end
       else 
-        result << Place.new(:name => "Blacksmith",
+        result << Place.new(:name => "Blacksmiths Workshop",
                             :location => Location.new(:x => 10, :z => 10))
       end
       result

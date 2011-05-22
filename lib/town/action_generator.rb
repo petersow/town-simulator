@@ -14,7 +14,8 @@ module Town
       if thing.is_a? Person
         if thing.job 
           if @time.hour >= thing.job.start_hour-1 and @time.hour < thing.job.start_hour
-            return WalkAction.new(:end_location => "Work")
+            name = thing.job.place.name
+            return WalkAction.new(:end_location => "Work at #{name}")
           end
           if @time.hour >= thing.job.start_hour and @time.hour < thing.job.end_hour
             return WorkAction.new

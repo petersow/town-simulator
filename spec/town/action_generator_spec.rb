@@ -173,7 +173,9 @@ module Town
         @ten = Time.new(:hour => 10)
         @seventeen = Time.new(:hour => 17)
         @eightteen = Time.new(:hour => 18)
-        @person.job = JobRole.new(:name => "Forester")
+        @place = Place.new(:name => "Fishers Hut")
+        @person.job = JobRole.new(:name => "Fisher", 
+                                  :place => @place)
       end
 
       it "should not walk to work before an hour before start time" do
