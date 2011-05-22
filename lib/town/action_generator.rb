@@ -19,8 +19,15 @@ module Town
           if @time.hour >= thing.job.start_hour and @time.hour < thing.job.end_hour
             return WorkAction.new
           end
+          if @time.hour >= thing.job.end_hour and @time.hour < thing.job.end_hour+1
+            return WalkAction.new(:end_location => "Home")
+          end
         end
-        if thing.current_action.is_a? EatAction
+        if thing.current_action.is_a? WalkAction
+          if thing.current_action.end_location.eql? "Home" 
+            return EatAction.new(:meal_name => "Dinner")
+          end
+        elsif thing.current_action.is_a? EatAction
           thing.current_action.step
           if thing.current_action.is_finished?
             return IdleAction.new

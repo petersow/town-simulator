@@ -200,12 +200,32 @@ module Town
         @person.current_action.should be_is_a WorkAction
       end
 
-      it "should not working after work end time" do
+      it "should not be working after work end time" do
         @action_generator.time = @eightteen
         @person.current_action =  @action_generator.next_action(@person)
         @person.current_action.should_not be_is_a WorkAction
       end
 
+      it "should walk home from work for an hour after end time" do
+        @action_generator.time = @seventeen
+        @person.current_action =  @action_generator.next_action(@person)
+        @person.current_action.should be_is_a WalkAction
+      end
+
+      it "should not be walking home from  work an hour after work end time" do
+        @action_generator.time = @eightteen
+        @person.current_action =  @action_generator.next_action(@person)
+        @person.current_action.should_not be_is_a WalkAction
+      end
+
+      it "should eat dinner when getting in from work" do
+        @action_generator.time = @seventeen
+        @person.current_action =  @action_generator.next_action(@person)
+        @person.current_action.should be_is_a WalkAction
+        @action_generator.time = @eightteen
+        @person.current_action =  @action_generator.next_action(@person)
+        @person.current_action.should be_is_a EatAction
+      end
 
     end
   end
