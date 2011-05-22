@@ -12,6 +12,14 @@ module Town
         raise ArgumentError
       end
       if thing.is_a? Person
+        if thing.job 
+          if @time.hour >= thing.job.start_hour-1 and @time.hour < thing.job.start_hour
+            return WalkAction.new(:end_location => "Work")
+          end
+          if @time.hour >= thing.job.start_hour and @time.hour < thing.job.end_hour
+            return WorkAction.new
+          end
+        end
         if thing.current_action.is_a? EatAction
           thing.current_action.step
           if thing.current_action.is_finished?

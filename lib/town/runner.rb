@@ -23,6 +23,8 @@ module Town
       @action_generator = ActionGenerator.new
       @options[:sleep_time] = 0.05
       @options[:output_format] = options[:output_format] ||= "text"
+
+      @people.first.job = JobRole.new(:name => "Fisher")
     end 
  
     def start 

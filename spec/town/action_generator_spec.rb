@@ -163,5 +163,50 @@ module Town
         end
       end
     end
+
+    context "person with a job" do
+  
+      before(:each) do
+        @seven = Time.new(:hour => 7)
+        @eight = Time.new(:hour => 8)
+        @nine = Time.new(:hour => 9)
+        @ten = Time.new(:hour => 10)
+        @seventeen = Time.new(:hour => 17)
+        @eightteen = Time.new(:hour => 18)
+        @person.job = JobRole.new(:name => "Forester")
+      end
+
+      it "should not walk to work before an hour before start time" do
+        @action_generator.time = @seven
+        @person.current_action =  @action_generator.next_action(@person)
+        @person.current_action.should_not be_is_a WalkAction
+      end
+
+      it "should walk to work an hour before start time" do
+        @action_generator.time = @eight
+        @person.current_action =  @action_generator.next_action(@person)
+        @person.current_action.should be_is_a WalkAction
+      end
+
+      it "should not be walking to work after work start time" do
+        @action_generator.time = @nine
+        @person.current_action =  @action_generator.next_action(@person)
+        @person.current_action.should_not be_is_a WalkAction
+      end
+
+      it "should be working after work start time" do
+        @action_generator.time = @nine
+        @person.current_action =  @action_generator.next_action(@person)
+        @person.current_action.should be_is_a WorkAction
+      end
+
+      it "should not working after work end time" do
+        @action_generator.time = @eightteen
+        @person.current_action =  @action_generator.next_action(@person)
+        @person.current_action.should_not be_is_a WorkAction
+      end
+
+
+    end
   end
 end
