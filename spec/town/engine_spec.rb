@@ -51,6 +51,43 @@ module Town
       end
     end
 
+    context "place config for 1 place" do
+
+      before(:each) do
+        @places_config = YAML::load(File.open('spec/fixtures/one_place.yaml'))
+        @engine = Engine.new(:places_config => @places_config)
+        @place = @engine.places.first
+      end
+
+      it "should let me pass in a place config array" do
+        lambda{Engine.new(:places_config => @places_config)}.should_not raise_error
+      end
+    
+      it "should have 1 place" do
+        @engine.places.size.should eql 1
+      end
+
+      it "should have a place with the name Farm" do
+        @place.name.should eql "Farm"
+      end
+
+      it "should have a place with a location" do
+        @place.location.should_not be_nil
+      end
+
+      it "should have a place with a location with an x of 20" do
+        @place.location.x.should eql 20
+      end
+
+      it "should have a place with a location with a y of 0" do
+        @place.location.y.should eql 0
+      end
+
+      it "should have a place with a location with a z of 30" do
+        @place.location.z.should eql 30
+      end
+    end
+
     context "Starting up" do
 
       before(:each) do
@@ -83,8 +120,8 @@ module Town
         @engine.start
       end
 
-      it "should have an array of people" do
-        @engine.people.should_not be_nil
+      it "should have an array of places" do
+        @engine.places.should_not be_nil
       end
 
     end

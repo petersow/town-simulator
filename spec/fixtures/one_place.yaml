@@ -1,0 +1,6 @@
+place_one:
+  name: Farm
+  location:
+    x: 20
+    y: 0
+    z: 30
