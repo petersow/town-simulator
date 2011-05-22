@@ -1,3 +1,5 @@
+require 'yaml'
+
 module Town
   class Clock
 
@@ -37,6 +39,19 @@ module Town
 
     def to_s
       "#{pad(hour)}:#{pad(minute)} #{pad(day)}/#{pad(month)}/#{year}"
+    end
+
+    def to_yaml
+      out = {}
+      out['class'] = "Clock"
+      values = {}
+      values['minute'] = minute
+      values['hour'] = hour
+      values['day'] = day
+      values['month'] = month
+      values['year'] = year
+      out['values'] = values
+      out.to_yaml
     end
 
     def tick

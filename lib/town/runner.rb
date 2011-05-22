@@ -22,6 +22,7 @@ module Town
 
       @action_generator = ActionGenerator.new
       @options[:sleep_time] = 0.05
+      @options[:output_format] = "text"
     end 
  
     def start 
@@ -30,7 +31,11 @@ module Town
       while not @seconds_to_run.eql?(0) do
         @clock.tick
         @action_generator.time = @clock.time
-        @messenger.puts "#{@clock.to_s}\n"
+        if @options[:output_format].eql? "yaml"
+          @messenger.puts @clock.to_yaml
+        else
+          @messenger.puts "#{@clock}\n"
+        end
 
         @people.each do |person|
           person.current_action = @action_generator.next_action(person)
