@@ -10,6 +10,5 @@ module Town
       @location = options[:location] ||= Location.new
       @current_action = IdleAction.new
     end
-
   end
 end
