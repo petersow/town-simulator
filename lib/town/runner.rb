@@ -8,9 +8,9 @@ module Town
 
     FOREVER = -1
 
-    def initialize(messenger, clock = Clock.new, options = {})
+    def initialize(messenger, options = {})
       @messenger = messenger
-      @clock = clock
+      @clock = options[:clock] ||= Clock.new
       @seconds_to_run = options[:seconds_to_run] ||= FOREVER
       @options = options
    
@@ -22,7 +22,7 @@ module Town
 
       @action_generator = ActionGenerator.new
       @options[:sleep_time] = 0.05
-      @options[:output_format] = "text"
+      @options[:output_format] = options[:output_format] ||= "text"
     end 
  
     def start 

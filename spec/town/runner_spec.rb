@@ -9,7 +9,7 @@ module Town
         @messenger = mock(:messenger).as_null_object
         @clock = mock(:clock).as_null_object
         @clock.stub!(:to_s).and_return("00:01 01/01/1")
-        @runner = Runner.new(@messenger, @clock, 
+        @runner = Runner.new(@messenger, :clock => @clock, 
                              :seconds_to_run => 1, :sleep_time => 0)
       end
 
