@@ -116,5 +116,44 @@ module Town
       lambda{Person.new(:wake_up_hour => 25)}.should raise_error ArgumentError
     end
 
+    context "yaml output" do
+    
+      before(:each) do
+        @person.first_name = "Yaml"
+        @person.family_name = "Test"
+        @yaml = YAML::load @person.to_yaml
+      end
+
+      it "should have a to_yaml method" do
+        @person.to_yaml.should_not be_nil
+      end
+
+      it "should set class to Person on the to_yaml output" do
+        @yaml['class'].should eql "Person"
+      end
+
+      it "should have an id which is the t_id" do
+        @yaml['id'].should eql @person.t_id
+      end
+
+      it "should have a hash of values" do
+       @yaml['values'].should be_is_a Hash
+       @yaml['values'].should_not be_nil
+      end
+
+      it "should have a hash of values with first name set to Yaml" do
+        @yaml['values']['first_name'].should eql "Yaml"
+      end
+
+      it "should have a hash of values with first name set to Test" do
+        @yaml['values']['family_name'].should eql "Test"
+      end
+
+      it "should have a hash of values with date of birth set to 00:00 01/01/1" do
+        @yaml['values']['date_of_birth'].should eql "00:00 01/01/1"
+      end
+
+    end
+
   end
 end

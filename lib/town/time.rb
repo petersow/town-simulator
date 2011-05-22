@@ -22,5 +22,16 @@ module Town
       end
       hour
     end
+
+    def to_s
+      "#{pad(hour)}:#{pad(minute)} #{pad(day)}/#{pad(month)}/#{year}"
+    end
+
+    protected 
+
+    def pad(time)
+      "#{time < 10 ? "0#{time}" : time}"
+    end
+
   end
 end

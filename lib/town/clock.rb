@@ -38,7 +38,7 @@ module Town
     end
 
     def to_s
-      "#{pad(hour)}:#{pad(minute)} #{pad(day)}/#{pad(month)}/#{year}"
+      @time.to_s
     end
 
     def to_yaml
@@ -72,12 +72,6 @@ module Town
         @time.month = MONTH_INIT
         @time.year += 1
       end
-    end
-
-    protected 
-
-    def pad(time)
-      "#{time < 10 ? "0#{time}" : time}"
     end
   end
 end

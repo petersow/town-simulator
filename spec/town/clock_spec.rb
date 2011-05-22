@@ -195,7 +195,7 @@ module Town
       end
 
       it "should have a to_yaml method" do
-        @clock.to_yaml.should_not be_nil
+        @yaml.should_not be_nil
       end
    
       it "should set class to Clock on the to_yaml output" do
@@ -207,23 +207,23 @@ module Town
        @yaml['values'].should_not be_nil
       end
 
-      it "should have an array of values with minute set to 5" do
+      it "should have a hash of values with minute set to 5" do
         @yaml['values']['minute'].should eql 5
       end
 
-      it "should have an array of values with hour set to 23" do
+      it "should have a hash of values with hour set to 23" do
         @yaml['values']['hour'].should eql 23
       end
 
-      it "should have an array of values with day set to 1" do
+      it "should have a hash of values with day set to 1" do
         @yaml['values']['day'].should eql 1
       end
 
-      it "should have an array of values with month set to 1" do
+      it "should have a hash of values with month set to 1" do
         @yaml['values']['month'].should eql 1
       end
 
-      it "should have an array of values with year set to 1" do
+      it "should have a hash of values with year set to 1" do
         @yaml['values']['year'].should eql 1
       end
 
