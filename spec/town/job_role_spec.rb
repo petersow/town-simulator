@@ -4,6 +4,7 @@ module Town
   describe JobRole do
     before(:each) do
       @job_role = Town::JobRole.new
+      @place = Place.new
     end
 
     it "has a j_id" do
@@ -74,5 +75,23 @@ module Town
       job_role = JobRole.new(:end_hour => 10) 
       job_role.end_hour.should eql 10
     end
+
+    it "can have a place" do
+      lambda{@job_role.place = @place}.should_not raise_error NoMethodError
+    end
+
+    it "can have a job of type Town::Place" do
+      @job_role.place = @place
+      @job_role.place.should be_is_a Place
+    end
+
+    it "should let place be set at creation" do
+      fisher = Place.new(:name => "Fishers",
+                         :location => Location.new(:x => 15, :y => 0, :z => 30))
+      role = JobRole.new(:name => "Fisher", :place => fisher)
+      role.place.should_not be_nil
+      role.place.p_id.should eql fisher.p_id
+    end
+
   end
 end
