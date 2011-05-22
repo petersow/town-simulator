@@ -4,7 +4,7 @@ module Town
   class Runner
 
     attr_accessor :seconds_to_run
-    attr_reader :people
+    attr_reader :people, :clock
 
     FOREVER = -1
 
