@@ -6,6 +6,7 @@ module Town
 
     before(:each) do
       @person = Person.new
+      @job_role = JobRole.new
     end
 
     it "should be a subclass of Thing" do
@@ -114,6 +115,22 @@ module Town
 
     it "should check wake_up_hour is <= 23 at creation" do
       lambda{Person.new(:wake_up_hour => 25)}.should raise_error ArgumentError
+    end
+
+    it "can have a job" do
+      lambda{@person.job = @job_role}.should_not raise_error NoMethodError
+    end
+
+    it "can have a job of type Town::JobRole" do
+      @person.job = @job_role
+      @person.job.should be_is_a JobRole
+    end
+
+    it "should let the current action be changed" do
+      @person.job = @job_role
+      old_id = @person.job.j_id
+      @person.job = JobRole.new(:name => "Walker")
+      @person.job.j_id.should_not eql old_id
     end
 
     context "yaml output" do

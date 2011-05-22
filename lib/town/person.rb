@@ -1,6 +1,6 @@
 module Town
   class Person < Thing
-    attr_accessor :first_name, :family_name, :bedtime_hour, :wake_up_hour
+    attr_accessor :first_name, :family_name, :bedtime_hour, :wake_up_hour, :job
     attr_reader :date_of_birth
    
     def initialize(options = {})
