@@ -121,6 +121,7 @@ module Town
       before(:each) do
         @person.first_name = "Yaml"
         @person.family_name = "Test"
+        @person.current_action = IdleAction.new
         @yaml = YAML::load @person.to_yaml
       end
 
@@ -151,6 +152,10 @@ module Town
 
       it "should have a hash of values with date of birth set to 00:00 01/01/1" do
         @yaml['values']['date_of_birth'].should eql "00:00 01/01/1"
+      end
+
+      it "should have a hash of values with current action set to 'Idle'" do
+        @yaml['values']['current_action'].should eql "Idle"
       end
 
     end

@@ -29,6 +29,7 @@ module Town
       values['first_name'] = @first_name
       values['family_name'] = @family_name
       values['date_of_birth'] = @date_of_birth.to_s
+      values['current_action'] = @current_action.to_s
       out['values'] = values
       out.to_yaml
     end
