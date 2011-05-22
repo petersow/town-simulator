@@ -9,7 +9,7 @@ module Town
     FOREVER = -1
 
     def initialize(options = {})
-      @messenger = options[:messenger]
+      @messenger = options[:messenger] || STDOUT
       @clock = options[:clock] ||= Clock.new
       @seconds_to_run = options[:seconds_to_run] ||= FOREVER
       @options = options

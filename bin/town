@@ -2,5 +2,5 @@
 $LOAD_PATH.push File.join(File.dirname(__FILE__), "../lib")
 require 'town'
 
-runner = Town::Runner.new(STDOUT)
-runner.start
+engine = Town::Engine.new()
+engine.start
