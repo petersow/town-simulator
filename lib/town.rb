@@ -1,5 +1,5 @@
 require 'town/clock'
-require 'town/runner'
+require 'town/engine'
 require 'town/thing'
 require 'town/location'
 require 'town/person'

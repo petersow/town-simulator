@@ -1,7 +1,7 @@
 require 'town/clock'
 
 module Town
-  class Runner
+  class Engine
 
     attr_accessor :seconds_to_run
     attr_reader :people, :clock
