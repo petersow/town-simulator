@@ -57,5 +57,25 @@ module Town
       job_role.start_hour.should eql 10
     end
 
+    it "should have a end hour" do
+      @job_role.end_hour.should_not be_nil
+    end
+
+    it "should default end hour to 17" do
+      @job_role.end_hour.should eql 17
+    end
+
+    it "should let end hour be changed" do
+      @job_role.end_hour = 19
+      @job_role.end_hour.should eql 19
+    end
+
+    it "should let name be set at creation" do
+      job_role = JobRole.new(:end_hour => 10) 
+      job_role.end_hour.should eql 10
+    end
+
+
+
   end
 end
