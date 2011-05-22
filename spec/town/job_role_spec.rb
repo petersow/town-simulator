@@ -74,8 +74,5 @@ module Town
       job_role = JobRole.new(:end_hour => 10) 
       job_role.end_hour.should eql 10
     end
-
-
-
   end
 end

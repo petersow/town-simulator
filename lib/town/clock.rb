@@ -8,7 +8,7 @@ module Town
     DAY_INIT = 1
     HOUR_INIT = 0
     MINUTE_INIT = 0
-  
+
     def initialize
       @time = Town::Time.new
     end

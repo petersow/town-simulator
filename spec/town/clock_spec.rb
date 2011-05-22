@@ -6,7 +6,7 @@ module Town
     before(:each) do
       @clock = Town::Clock.new
     end
-
+   
     it "has a time variable" do
       @clock.time.should_not be_nil
     end
