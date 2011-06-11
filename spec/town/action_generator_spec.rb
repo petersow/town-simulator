@@ -7,9 +7,33 @@ module Town
       @person = Person.new(:first_name => "Mr",
                            :family_name => "Test")
       @action_generator = ActionGenerator.new
+      
+      @midnight = Time.new(:hour => 0)
+      @one = Time.new(:hour => 1)
+      @two = Time.new(:hour => 2)
+      @three = Time.new(:hour => 3)
+      @four = Time.new(:hour => 4)
+      @five = Time.new(:hour => 5)
+      @six = Time.new(:hour => 6)
+      @seven = Time.new(:hour => 7)
+      @eight = Time.new(:hour => 8)
+      @nine = Time.new(:hour => 9)
+      @ten = Time.new(:hour => 10)
+      @eleven = Time.new(:hour => 11)
+      @twelve = Time.new(:hour => 12)
+      @thirteen = Time.new(:hour => 13)
+      @fourteen = Time.new(:hour => 14)
+      @fifteen = Time.new(:hour => 15)
+      @sixteen = Time.new(:hour => 16)
+      @seventeen = Time.new(:hour => 17)
+      @eighteen = Time.new(:hour => 18)
+      @nineteen = Time.new(:hour => 19)
+      @twenty = Time.new(:hour => 20)
+      @twentyone = Time.new(:hour => 21)
+      @twentytwo = Time.new(:hour => 22)
+      @twentythree = Time.new(:hour => 23)
 
-      @midday = Time.new(:hour => 12)
-      @action_generator.time = @midday
+      @action_generator.time = @twelve
     end
  
     it "should hold a copy of the time" do
@@ -39,9 +63,6 @@ module Town
     context "bed time" do
       before(:each) do
         @person.bedtime_hour = 23
-        @twentytwo = Time.new(:hour => 22)
-        @twentythree = Time.new(:hour => 23)
-        @midnight = Time.new(:hour => 0)
         @action_generator.time = @twentytwo
       end
 
@@ -65,8 +86,6 @@ module Town
       before(:each) do
         @person.wake_up_hour = 7
         @person.current_action = SleepAction.new
-        @six = Time.new(:hour => 6)
-        @seven = Time.new(:hour => 7)
         @action_generator.time = @six
       end
 
@@ -80,6 +99,23 @@ module Town
       end
     end
 
+    context "bed time" do
+
+      before(:each) do
+        @person.bedtime_hour = 22
+        @action_generator.time = @twenty
+      end
+
+      it "should have next_action return IdleAction if it is before" do
+        @action_generator.next_action(@person).class.should  eql IdleAction.new.class
+      end
+
+      it "should have next_action return SleepAction if it is after" do
+        @action_generator.time = @twentythree
+        @action_generator.next_action(@person).class.should eql SleepAction.new.class
+      end
+    end
+
     context "night sleeper" do
 
       before(:each) do
@@ -88,11 +124,6 @@ module Town
       end 
 
       context "bed time" do
-        before(:each) do
-          @twentythree = Time.new(:hour => 0)
-          @midnight = Time.new(:hour => 0)
-          @one = Time.new(:hour => 1)
-        end
 
         it "should have next_action return IdleAction if it is the day before" do
           @action_generator.time = @twentythree
@@ -113,8 +144,6 @@ module Town
       context "wake time" do
         before(:each) do
           @person.current_action = SleepAction.new
-          @nine = Time.new(:hour => 9)
-          @ten = Time.new(:hour => 10)
         end
 
         it "should have next_action return SleepAction if it is already Sleeping and is before" do
@@ -167,12 +196,6 @@ module Town
     context "person with a job" do
   
       before(:each) do
-        @seven = Time.new(:hour => 7)
-        @eight = Time.new(:hour => 8)
-        @nine = Time.new(:hour => 9)
-        @ten = Time.new(:hour => 10)
-        @seventeen = Time.new(:hour => 17)
-        @eightteen = Time.new(:hour => 18)
         @place = Place.new(:name => "Fishers Hut")
         @person.job = JobRole.new(:name => "Fisher", 
                                   :place => @place)
@@ -203,7 +226,7 @@ module Town
       end
 
       it "should not be working after work end time" do
-        @action_generator.time = @eightteen
+        @action_generator.time = @eighteen
         @person.current_action =  @action_generator.next_action(@person)
         @person.current_action.should_not be_is_a WorkAction
       end
@@ -215,7 +238,7 @@ module Town
       end
 
       it "should not be walking home from  work an hour after work end time" do
-        @action_generator.time = @eightteen
+        @action_generator.time = @eighteen
         @person.current_action =  @action_generator.next_action(@person)
         @person.current_action.should_not be_is_a WalkAction
       end
@@ -224,7 +247,7 @@ module Town
         @action_generator.time = @seventeen
         @person.current_action =  @action_generator.next_action(@person)
         @person.current_action.should be_is_a WalkAction
-        @action_generator.time = @eightteen
+        @action_generator.time = @eighteen
         @person.current_action =  @action_generator.next_action(@person)
         @person.current_action.should be_is_a EatAction
       end

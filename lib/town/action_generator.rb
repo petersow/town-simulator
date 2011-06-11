@@ -43,10 +43,17 @@ module Town
             return thing.current_action
           end
         elsif thing.current_action.is_a? SleepAction
-          if @time.hour >= thing.wake_up_hour
-            return WakeAction.new
+          if thing.bedtime_hour > thing.wake_up_hour
+            if @time.hour >= thing.wake_up_hour and @time.hour < thing.bedtime_hour
+              return WakeAction.new
+            end
+            return SleepAction.new
+          else
+            if @time.hour >= thing.wake_up_hour
+              return WakeAction.new
+            end
+            return SleepAction.new
           end
-          return SleepAction.new
         elsif thing.bedtime_hour > thing.wake_up_hour
           if @time.hour >= thing.bedtime_hour or @time.hour < thing.wake_up_hour
             return SleepAction.new
