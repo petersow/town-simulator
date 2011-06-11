@@ -1,0 +1,69 @@
+man_one:
+  first_name: Jeremy
+  family_name: Foxtrot
+  date_of_birth: 00:00 01/01/1
+  bedtime_hour: 23
+  wake_up_hour: 7
+
+man_two:
+  first_name: Frank
+  family_name: Smithson
+  date_of_birth: 00:00 01/01/1
+  bedtime_hour: 0
+  wake_up_hour: 8
+
+man_three:
+  first_name: George
+  family_name: Green
+  date_of_birth: 00:00 01/01/1
+  bedtime_hour: 22
+  wake_up_hour: 7
+
+man_four:
+  first_name: James
+  family_name: Burke
+  date_of_birth: 00:00 01/01/1
+  bedtime_hour: 22
+  wake_up_hour: 8
+
+man_five:
+  first_name: Roland
+  family_name: Nightowl
+  date_of_birth: 00:00 01/01/1
+  bedtime_hour: 5
+  wake_up_hour: 13
+
+man_six:
+  first_name: Thomas
+  family_name: Spin
+  date_of_birth: 00:00 01/01/1
+  bedtime_hour: 1
+  wake_up_hour: 9
+
+man_seven:
+  first_name: Brandon
+  family_name: Bash
+  date_of_birth: 00:00 01/01/1
+  bedtime_hour: 0
+  wake_up_hour: 7
+
+man_eight:
+  first_name: Peter
+  family_name: Sellsman
+  date_of_birth: 00:00 01/01/1
+  bedtime_hour: 22
+  wake_up_hour: 5
+
+man_nine:
+  first_name: Mathew
+  family_name: Turner
+  date_of_birth: 00:00 01/01/1
+  bedtime_hour: 22
+  wake_up_hour: 5
+
+man_ten:
+  first_name: Samuel
+  family_name: Early
+  date_of_birth: 00:00 01/01/1
+  bedtime_hour: 21
+  wake_up_hour: 4

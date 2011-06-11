@@ -22,6 +22,17 @@ module Town
       @options[:output_format] = options[:output_format] ||= "text"
 
     end 
+
+    def tick
+      # Update game clock
+      @clock.tick
+      @action_generator.time = @clock.time
+
+      # Update people
+      @people.each do |person|
+        person.current_action = @action_generator.next_action(person)
+      end
+    end
  
     def start 
       @messenger.puts "Welcome to the Town!"
@@ -71,12 +82,6 @@ module Town
           end
           result << new_person
         end
-      else 
-        result << Person.new(:first_name => "Pete",
-                              :family_name => "Sowerbutts",
-                              :bedtime_hour => 1)
-        result.first.job = JobRole.new(:name => "Fisher", 
-                                       :place => @places.first)
       end
       result
     end
@@ -100,9 +105,6 @@ module Town
           end
           result << new_place
         end
-      else 
-        result << Place.new(:name => "Blacksmiths Workshop",
-                            :location => Location.new(:x => 10, :z => 10))
       end
       result
     end

@@ -1,6 +1,68 @@
 #!/usr/bin/env ruby
 $LOAD_PATH.push File.join(File.dirname(__FILE__), "../lib")
+
+require 'ncurses'
+require 'yaml'
+
 require 'town'
 
-engine = Town::Engine.new()
-engine.start
+Ncurses.initscr
+Ncurses.cbreak # provide unbuffered input
+Ncurses.noecho # turn off input echoing
+Ncurses.nonl # turn off newline translation
+
+screen = Ncurses.stdscr
+
+screen.intrflush(false) # turn off flush-on-interrupt
+screen.keypad(true) # turn on keypad mode
+
+screen.addstr("Welcome to the Town!")
+screen.addstr("\n\npress any key to start.")
+screen.getch
+
+@people_config = YAML::load(File.open('example/people.yaml'))
+@places_config = YAML::load(File.open('example/places.yaml'))
+
+engine = Town::Engine.new(:people_config => @people_config,
+                          :places_config => @places_config)
+
+screen.clear
+screen.addstr "Loaded #{engine.places.size} #{engine.places.size > 1 ? "places" : "place"}.\n"
+engine.places.each do |place|
+  screen.addstr "#{place.name} is at (#{place.location.x}," +
+                "#{place.location.y},#{place.location.z})\n"
+end
+screen.addstr("\n\npress any key to continue.")
+screen.refresh
+screen.getch
+
+screen.clear
+screen.addstr "Loaded #{engine.people.size} #{engine.people.size > 1 ? "people" : "person"}.\n"
+engine.people.each do |person|
+  screen.addstr "#{person.first_name} #{person.family_name} is at " +
+                "(#{person.location.x},#{person.location.y}," +
+                "#{person.location.z})\n"
+end
+
+screen.addstr("\n\npress any key to continue.")
+screen.getch
+screen.refresh
+
+
+loop do
+  engine.tick
+  screen.clear
+  output = "#{engine.clock}\n"
+
+  engine.people.each do |person|
+    output += "#{person.first_name} #{person.family_name} is at " +
+         "(#{person.location.x},#{person.location.y}," +
+         "#{person.location.z})\n"
+    output += "#{person.first_name} #{person.family_name} is #{person.current_action}.\n"
+  end
+  screen.addstr output
+  screen.refresh
+  sleep 0.05
+end
+
+

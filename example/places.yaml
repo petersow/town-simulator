@@ -1,0 +1,77 @@
+place_one:
+  name: Farm
+  location:
+    x: 20
+    y: 0
+    z: 30
+
+house_one:
+  name: House one
+  location:
+    x: 20
+    y: 0
+    z: 30
+
+house_two:
+  name: House two
+  location:
+    x: 20
+    y: 0
+    z: 30
+
+house_three:
+  name: House three
+  location:
+    x: 20
+    y: 0
+    z: 30
+
+
+house_four:
+  name: House four
+  location:
+    x: 20
+    y: 0
+    z: 30
+
+house_five:
+  name: House five
+  location:
+    x: 20
+    y: 0
+    z: 30
+
+house_six:
+  name: House six
+  location:
+    x: 20
+    y: 0
+    z: 30
+
+house_seven:
+  name: House seven
+  location:
+    x: 20
+    y: 0
+    z: 30
+
+house_eight:
+  name: House eight
+  location:
+    x: 20
+    y: 0
+    z: 30
+
+house_nine:
+  name: House nine
+  location:
+    x: 20
+    y: 0
+    z: 30
+
+house_ten:
+  name: House ten
+  location:
+    x: 20
+    y: 0
+    z: 30
