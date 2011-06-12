@@ -222,7 +222,7 @@ module Town
       it "should be working after work start time" do
         @action_generator.time = @nine
         @person.current_action =  @action_generator.next_action(@person)
-        @person.current_action.should be_is_a WorkAction
+        @person.current_action.class.should eql WorkAction.new.class
       end
 
       it "should not be working after work end time" do

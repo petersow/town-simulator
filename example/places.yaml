@@ -1,105 +1,104 @@
 place_one:
   name: Farm
   location:
-    x: 20
+    x: -7
     y: 0
-    z: 30
+    z: -4
 
 place_two:
   name: Foresters Hut
   location:
-    x: 20
+    x: 6
     y: 0
-    z: 30
+    z: 4
 
 place_three:
   name: Fishers Hut
   location:
-    x: 20
+    x: 4
     y: 0
-    z: 30
+    z: -4
 
 place_four:
   name: Blacksmiths Workshop
   location:
-    x: 20
+    x: 0
     y: 0
-    z: 30
+    z: 0
 
 place_five:
   name: Market Stall
   location:
-    x: 20
+    x: 0
     y: 0
-    z: 30
+    z: 4
 
 house_one:
   name: House one
   location:
-    x: 20
+    x: -8
     y: 0
-    z: 30
+    z: 5
 
 house_two:
   name: House two
   location:
-    x: 20
+    x: -6
     y: 0
-    z: 30
+    z: 5
 
 house_three:
   name: House three
   location:
-    x: 20
+    x: -8
     y: 0
-    z: 30
-
+    z: 3
 
 house_four:
   name: House four
   location:
-    x: 20
+    x: -6
     y: 0
-    z: 30
+    z: 3
 
 house_five:
   name: House five
   location:
-    x: 20
+    x: -8
     y: 0
-    z: 30
+    z: 1
 
 house_six:
   name: House six
   location:
-    x: 20
+    x: -6
     y: 0
-    z: 30
+    z: 1
 
 house_seven:
   name: House seven
   location:
-    x: 20
+    x: 4
     y: 0
-    z: 30
+    z: 1
 
 house_eight:
   name: House eight
   location:
-    x: 20
+    x: 6
     y: 0
-    z: 30
+    z: 1
 
 house_nine:
   name: House nine
   location:
-    x: 20
+    x: 4
     y: 0
-    z: 30
+    z: -1
 
 house_ten:
   name: House ten
   location:
-    x: 20
+    x: 6
     y: 0
-    z: 30
+    z: -1

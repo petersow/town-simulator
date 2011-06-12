@@ -95,6 +95,11 @@ module Town
             rescue
             end
           end
+          # Force start location to be the home
+          begin
+            new_person.location = new_person.home.location.clone
+          rescue
+          end
           result << new_person
         end
       end
