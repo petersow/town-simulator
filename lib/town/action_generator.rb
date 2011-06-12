@@ -18,7 +18,7 @@ module Town
             return WalkAction.new(:end_location => "Work at #{name}")
           end
           if @time.hour >= thing.job.start_hour and @time.hour < thing.job.end_hour
-            return WorkAction.new
+            return WorkAction.new(:job_role => thing.job)
           end
           if @time.hour >= thing.job.end_hour and @time.hour < thing.job.end_hour+1
             return WalkAction.new(:end_location => "Home")

@@ -1,5 +1,30 @@
 job_role_one:
   name: Farmer
-  start_hour: 5
+  start_hour: 6
   end_hour: 15
   place: Farm
+
+job_role_two:
+  name: Forester
+  start_hour: 8
+  end_hour: 16
+  place: Foresters Hut
+
+job_role_three:
+  name: Fisher
+  start_hour: 9
+  end_hour: 17
+  place: Fishers Hut
+
+job_role_four:
+  name: Blacksmith
+  start_hour: 10
+  end_hour: 18
+  place: Blacksmiths Workshop
+
+job_role_five:
+  name: Salesman
+  start_hour: 9
+  end_hour: 17
+  place: Market Stall
+

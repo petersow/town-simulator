@@ -5,6 +5,35 @@ place_one:
     y: 0
     z: 30
 
+place_two:
+  name: Foresters Hut
+  location:
+    x: 20
+    y: 0
+    z: 30
+
+place_three:
+  name: Fishers Hut
+  location:
+    x: 20
+    y: 0
+    z: 30
+
+place_four:
+  name: Blacksmiths Workshop
+  location:
+    x: 20
+    y: 0
+    z: 30
+
+place_five:
+  name: Market Stall
+  location:
+    x: 20
+    y: 0
+    z: 30
+
+
 house_one:
   name: House one
   location:

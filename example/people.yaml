@@ -4,6 +4,7 @@ man_one:
   date_of_birth: 00:00 01/01/1
   bedtime_hour: 23
   wake_up_hour: 7
+  job: Fisher
 
 man_two:
   first_name: Frank
@@ -11,6 +12,7 @@ man_two:
   date_of_birth: 00:00 01/01/1
   bedtime_hour: 0
   wake_up_hour: 8
+  job: Blacksmith
 
 man_three:
   first_name: George
@@ -18,13 +20,15 @@ man_three:
   date_of_birth: 00:00 01/01/1
   bedtime_hour: 22
   wake_up_hour: 7
+  job: Fisher
 
 man_four:
   first_name: James
   family_name: Burke
   date_of_birth: 00:00 01/01/1
   bedtime_hour: 22
-  wake_up_hour: 8
+  wake_up_hour: 4
+  job: Farmer
 
 man_five:
   first_name: Roland
@@ -37,15 +41,17 @@ man_six:
   first_name: Thomas
   family_name: Spin
   date_of_birth: 00:00 01/01/1
-  bedtime_hour: 1
-  wake_up_hour: 9
+  bedtime_hour: 0
+  wake_up_hour: 7
+  job: Salesman
 
 man_seven:
   first_name: Brandon
   family_name: Bash
   date_of_birth: 00:00 01/01/1
-  bedtime_hour: 0
-  wake_up_hour: 7
+  bedtime_hour: 23
+  wake_up_hour: 4
+  job: Farmer
 
 man_eight:
   first_name: Peter
@@ -53,6 +59,7 @@ man_eight:
   date_of_birth: 00:00 01/01/1
   bedtime_hour: 22
   wake_up_hour: 5
+  job: Forester
 
 man_nine:
   first_name: Mathew
@@ -60,6 +67,7 @@ man_nine:
   date_of_birth: 00:00 01/01/1
   bedtime_hour: 22
   wake_up_hour: 5
+  job: Blacksmith
 
 man_ten:
   first_name: Samuel
@@ -67,3 +75,4 @@ man_ten:
   date_of_birth: 00:00 01/01/1
   bedtime_hour: 21
   wake_up_hour: 4
+  job: Farmer

@@ -1,13 +1,16 @@
 module Town
   class WorkAction < Action
 
-    def initialize
+    attr_accessor :job_role
+
+    def initialize(options = {})
       super(:name => "Work",
             :type => "passive")
+      @job_role = options[:job_role] || nil
     end
 
     def to_s
-      "Working"
+      "Working at #{@job_role.place.name}"
     end
 
     def is_finished?
