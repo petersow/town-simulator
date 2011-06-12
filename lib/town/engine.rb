@@ -4,7 +4,7 @@ module Town
   class Engine
 
     attr_accessor :seconds_to_run
-    attr_reader :people, :places, :clock
+    attr_reader :people, :places, :job_roles, :clock
 
     FOREVER = -1
 
@@ -15,6 +15,7 @@ module Town
       @options = options
    
       @places = init_places(options[:places_config])
+      @job_roles = init_job_roles(options[:job_roles_config])
       @people = init_people(options[:people_config])
 
       @action_generator = ActionGenerator.new
@@ -108,5 +109,31 @@ module Town
       end
       result
     end
+
+    def init_job_roles(job_roles_config)
+      result = []
+      if job_roles_config
+        job_roles_config.each_value do |job_role|
+          new_job_role = JobRole.new
+          job_role.each_pair do |key, value|
+            begin 
+              if key.eql? "place"
+                places.each do |place|
+                  if place.name.eql? place.name
+                    new_job_role.send "#{key}=", place
+                  end
+                end
+              else
+                new_job_role.send "#{key}=", value
+              end
+            rescue
+            end
+          end
+          result << new_job_role
+        end
+      end
+      result
+    end
+
   end
 end

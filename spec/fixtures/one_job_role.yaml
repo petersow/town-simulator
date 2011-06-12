@@ -1,0 +1,5 @@
+job_role_one:
+  name: Farmer
+  start_hour: 5
+  end_hour: 15
+  place: Farm

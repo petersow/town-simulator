@@ -123,8 +123,42 @@ module Town
       it "should have an array of places" do
         @engine.places.should_not be_nil
       end
-
     end
 
+    context "job role config for 1 job role" do
+
+      before(:each) do
+        @places_config = YAML::load(File.open('spec/fixtures/one_place.yaml'))
+        @job_roles_config = YAML::load(File.open('spec/fixtures/one_job_role.yaml'))
+
+        @engine = Engine.new(:places_config => @places_config,
+                             :job_roles_config => @job_roles_config)
+        @job_role = @engine.job_roles.first
+      end
+
+      it "should let me pass in a job role config array" do
+        lambda{Engine.new(:job_roles_config => @job_roles_config)}.should_not raise_error
+      end
+    
+      it "should have 1 job role" do
+        @engine.job_roles.size.should eql 1
+      end
+
+      it "should have a job role with the name Farmer" do
+        @job_role.name.should eql "Farmer"
+      end
+
+      it "should have a job role with the start hour of 5" do
+        @job_role.start_hour.should eql 5
+      end
+
+      it "should have a job role with the end hour of 5" do
+        @job_role.end_hour.should eql 15
+      end
+
+      it "should have a job role with the place of Farm" do
+        @job_role.place.should eql @engine.places.first
+      end
+    end
   end
 end
