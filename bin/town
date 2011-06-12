@@ -22,15 +22,26 @@ screen.getch
 
 @people_config = YAML::load(File.open('example/people.yaml'))
 @places_config = YAML::load(File.open('example/places.yaml'))
+@job_roles_config = YAML::load(File.open('example/job_roles.yaml'))
 
 engine = Town::Engine.new(:people_config => @people_config,
-                          :places_config => @places_config)
+                          :places_config => @places_config,
+                          :job_roles_config => @job_roles_config)
 
 screen.clear
 screen.addstr "Loaded #{engine.places.size} #{engine.places.size > 1 ? "places" : "place"}.\n"
 engine.places.each do |place|
   screen.addstr "#{place.name} is at (#{place.location.x}," +
                 "#{place.location.y},#{place.location.z})\n"
+end
+screen.addstr("\n\npress any key to continue.")
+screen.refresh
+screen.getch
+
+screen.clear
+screen.addstr "Loaded #{engine.job_roles.size} #{engine.job_roles.size > 1 ? "Job roles" : "Job role"}.\n"
+engine.job_roles.each do |job_role|
+  screen.addstr "#{job_role.name} is at #{job_role.place.name}"
 end
 screen.addstr("\n\npress any key to continue.")
 screen.refresh
