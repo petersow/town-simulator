@@ -1,0 +1,7 @@
+person_one:
+  first_name: Jack
+  family_name: Potato
+  date_of_birth: 00:00 01/01/1
+  bedtime_hour: 22
+  wake_up_hour: 8
+  job: Farmer

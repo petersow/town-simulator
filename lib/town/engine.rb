@@ -77,6 +77,13 @@ module Town
           person.each_pair do |key, value|
             #Date of birth isnt allowed to be set
             begin 
+              if key.eql? "job"
+                job_roles.each do |job_role|
+                  if job_role.name.eql? value
+                    value = job_role
+                  end
+                end
+              end
               new_person.send "#{key}=", value
             rescue
             end
@@ -119,13 +126,12 @@ module Town
             begin 
               if key.eql? "place"
                 places.each do |place|
-                  if place.name.eql? place.name
-                    new_job_role.send "#{key}=", place
+                  if place.name.eql? value
+                    value = place
                   end
                 end
-              else
-                new_job_role.send "#{key}=", value
               end
+              new_job_role.send "#{key}=", value
             rescue
             end
           end
