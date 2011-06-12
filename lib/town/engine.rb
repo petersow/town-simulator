@@ -84,6 +84,13 @@ module Town
                   end
                 end
               end
+              if key.eql? "home"
+                places.each do |place|
+                  if place.name.eql? value
+                    value = place
+                  end
+                end
+              end
               new_person.send "#{key}=", value
             rescue
             end

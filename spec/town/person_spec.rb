@@ -7,6 +7,7 @@ module Town
     before(:each) do
       @person = Person.new
       @job_role = JobRole.new
+      @home = Place.new(:name => "Home")
     end
 
     it "should be a subclass of Thing" do
@@ -126,11 +127,27 @@ module Town
       @person.job.should be_is_a JobRole
     end
 
-    it "should let the current action be changed" do
+    it "should let the current job be changed" do
       @person.job = @job_role
       old_id = @person.job.j_id
       @person.job = JobRole.new(:name => "Walker")
       @person.job.j_id.should_not eql old_id
+    end
+
+    it "can have a home" do
+      lambda{@person.home = @home}.should_not raise_error NoMethodError
+    end
+
+    it "can have a home of type Town::Place" do
+      @person.home = @home
+      @person.home.class.should eql Place.new.class
+    end
+
+    it "should let the home be changed" do
+      @person.home = @home
+      old_id = @person.home.p_id
+      @person.home = Place.new(:name => "The Gutter")
+      @person.home.p_id.should_not eql old_id
     end
 
     context "yaml output" do

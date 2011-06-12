@@ -5,6 +5,7 @@ man_one:
   bedtime_hour: 23
   wake_up_hour: 7
   job: Fisher
+  home: House one
 
 man_two:
   first_name: Frank
@@ -13,6 +14,7 @@ man_two:
   bedtime_hour: 0
   wake_up_hour: 8
   job: Blacksmith
+  home: House two
 
 man_three:
   first_name: George
@@ -21,6 +23,7 @@ man_three:
   bedtime_hour: 22
   wake_up_hour: 7
   job: Fisher
+  home: House three
 
 man_four:
   first_name: James
@@ -29,6 +32,7 @@ man_four:
   bedtime_hour: 22
   wake_up_hour: 4
   job: Farmer
+  home: House four
 
 man_five:
   first_name: Roland
@@ -36,6 +40,7 @@ man_five:
   date_of_birth: 00:00 01/01/1
   bedtime_hour: 5
   wake_up_hour: 13
+  home: House five
 
 man_six:
   first_name: Thomas
@@ -44,6 +49,7 @@ man_six:
   bedtime_hour: 0
   wake_up_hour: 7
   job: Salesman
+  home: House six
 
 man_seven:
   first_name: Brandon
@@ -52,6 +58,7 @@ man_seven:
   bedtime_hour: 23
   wake_up_hour: 4
   job: Farmer
+  home: House seven
 
 man_eight:
   first_name: Peter
@@ -60,6 +67,7 @@ man_eight:
   bedtime_hour: 22
   wake_up_hour: 5
   job: Forester
+  home: House eight
 
 man_nine:
   first_name: Mathew
@@ -68,6 +76,7 @@ man_nine:
   bedtime_hour: 22
   wake_up_hour: 5
   job: Blacksmith
+  home: House nine
 
 man_ten:
   first_name: Samuel
@@ -76,3 +85,4 @@ man_ten:
   bedtime_hour: 21
   wake_up_hour: 4
   job: Farmer
+  home: House ten

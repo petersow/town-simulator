@@ -1,0 +1,6 @@
+home_one:
+  name: Home
+  location:
+    x: 20
+    y: 0
+    z: 30

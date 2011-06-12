@@ -181,5 +181,25 @@ module Town
         @person.job.should eql @engine.job_roles.first
       end
     end
+
+    context "people config for 1 person with a home" do
+
+      before(:each) do
+        @places_config = YAML::load(File.open('spec/fixtures/one_home.yaml'))
+        @people_config = YAML::load(File.open('spec/fixtures/one_home_owner.yaml'))
+        @engine = Engine.new(:people_config => @people_config,
+                             :places_config => @places_config)
+        @person = @engine.people.first
+      end
+
+      it "should have 1 person" do
+        @engine.people.size.should eql 1
+      end
+
+      it "should have a person with the home of home one" do
+        @person.home.should eql @engine.places.first
+      end
+    end
+
   end
 end

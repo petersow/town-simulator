@@ -33,7 +33,6 @@ place_five:
     y: 0
     z: 30
 
-
 house_one:
   name: House one
   location:
