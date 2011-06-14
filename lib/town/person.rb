@@ -21,6 +21,19 @@ module Town
       @wake_up_hour = Time.check_hour(hour)
     end
 
+    def should_go_to_work?(mins)
+      # find distance from home to work
+      time_to_travel = @location.distance(job.place.location)
+      puts "Results [#{time_to_travel}]"
+      # look at time, if no time left then go
+      if 60.to_i-mins > time_to_travel
+        false
+      else
+        true
+      end
+      # if time left then 20% chance to go early per tick
+    end
+
     def to_yaml
       out = {}
       out['class'] = "Person"

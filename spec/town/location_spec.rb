@@ -67,5 +67,11 @@ module Town
       location.y.should eql 2
       location.z.should eql 3
     end
+
+    it "should tell the distance between two locations" do
+      first = Location.new(:x => 5, :y => 3, :z => 0)
+      second = Location.new(:x => -10, :y => 5, :z => 2)
+      puts first.distance(second)
+    end
   end
 end

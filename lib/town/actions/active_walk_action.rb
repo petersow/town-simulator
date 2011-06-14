@@ -30,8 +30,6 @@ module Town
     end
 
     def is_finished?
-      puts @thing.location.inspect
-      puts @end_location.inspect
       return @thing.location.eql? @end_location.location
     end
 

@@ -23,23 +23,20 @@ module Town
               end
             end
           end
-          if @time.hour >= thing.job.start_hour-1 and @time.hour < thing.job.start_hour
-            name = thing.job.place.name
-            return ActiveWalkAction.new(:end_location => thing.job.place,
-                                        :thing => thing)
-          end
-          if @time.hour >= thing.job.start_hour and @time.hour < thing.job.end_hour
-            return WorkAction.new(:job_role => thing.job)
-          end
-          if @time.hour >= thing.job.end_hour and @time.hour < thing.job.end_hour+1
-            return ActiveWalkAction.new(:end_location => thing.home, :thing => thing)
-          end
           if thing.current_action.is_a? WorkAction
+            if @time.hour >= thing.job.end_hour and @time.hour < thing.job.end_hour+1
+              return ActiveWalkAction.new(:end_location => thing.home, :thing => thing)
+            end
             return WorkAction.new(:job_role => thing.job)
+          elsif @time.hour >= thing.job.start_hour-1 and @time.hour < thing.job.start_hour
+            name = thing.job.place.name
+            if thing.should_go_to_work?(@time.minute)
+              return ActiveWalkAction.new(:end_location => thing.job.place,
+                                          :thing => thing)
+            end
           end
-
         end
-        if thing.current_action.is_a? WalkAction
+        if thing.current_action.is_a? ActiveWalkAction
           if thing.current_action.end_location.eql? "Home" 
             return EatAction.new(:meal_name => "Dinner")
           end

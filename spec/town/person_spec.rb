@@ -194,5 +194,20 @@ module Town
 
     end
 
+    context "go to work" do
+
+      before(:each) do
+        @person.location = Location.new(:x => 5, :y => 0, :z => 2)
+        @job_role = JobRole.new
+        @job_role.place = Place.new(:name => "Lumber Mill", :location => Location.new(:x => 15, :y => 0, :z => 2))
+        @person.job = @job_role
+      end
+
+      it "should say 10 minutes to work" do
+        @person.should_go_to_work?(20)
+      end
+
+    end
+
   end
 end
