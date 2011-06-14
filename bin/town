@@ -61,6 +61,7 @@ screen.refresh
 
 
 loop do
+  screen.getch
   engine.tick
   screen.clear
   output = "#{engine.clock}\n"
@@ -73,7 +74,7 @@ loop do
   end
   screen.addstr output
   screen.refresh
-  sleep 0.05
+#  sleep 0.05
 end
 
 

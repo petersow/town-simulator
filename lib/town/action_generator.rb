@@ -21,6 +21,8 @@ module Town
               else
                 return EatAction.new(:meal_name => "Dinner")
               end
+            else
+              return thing.current_action
             end
           end
           if thing.current_action.is_a? WorkAction
