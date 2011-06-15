@@ -1,6 +1,7 @@
 module Town
   class Person < Thing
-    attr_accessor :first_name, :family_name, :bedtime_hour, :wake_up_hour, :job, :home
+    attr_accessor :first_name, :family_name, :bedtime_hour
+    attr_accessor :wake_up_hour, :job, :home, :inventory
     attr_reader :date_of_birth
    
     def initialize(options = {})
@@ -8,6 +9,7 @@ module Town
       @first_name = options[:first_name] ||= ""
       @family_name = options[:family_name] ||= ""
       @date_of_birth = options[:date_of_birth] ||= Town::Time.new
+      @inventory = []
       # Self used because @ doesn't throw the exception
       self.bedtime_hour=(options[:bedtime_hour] ||= 23)
       self.wake_up_hour=(options[:wake_up_hour] ||= 7)

@@ -9,6 +9,7 @@ require 'town/action_generator'
 require 'town/job_role'
 require 'town/river'
 require 'town/place'
+require 'town/item'
 
 require 'town/actions/action'
 require 'town/actions/idle_action'
