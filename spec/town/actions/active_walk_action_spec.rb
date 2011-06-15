@@ -66,7 +66,6 @@ module Town
     it "should move the players towards the location each step" do
       old_location = @person.location.clone
       @walk_action.step
-      puts @person.location.inspect
       @person.location.should_not eql old_location
     end
 
@@ -76,7 +75,6 @@ module Town
         @walk_action.step
         x += 1
       end
-      puts x
     end
    
   end
