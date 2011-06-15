@@ -17,7 +17,7 @@ module Town
         @task.step
 
         if @task.is_finished?
-          if @task.is_a? ActiveWalkAction and @task.end_location.eql? @foresters_hut
+          if @task.is_a? WalkAction and @task.end_location.eql? @foresters_hut
             #Get a Wood log
             @foresters_hut.inventory.each do |item|
               if item.name.eql? "Wood log"
@@ -28,11 +28,11 @@ module Town
             end
             @person.inventory.each do |item|
               if item.name.eql? "Wood log"
-                @task = ActiveWalkAction.new(:end_location => @place,
-                                             :thing => @person)
+                @task = WalkAction.new(:end_location => @place,
+                                       :thing => @person)
               end
             end
-          elsif @task.is_a? ActiveWalkAction and @task.end_location.eql? @place
+          elsif @task.is_a? WalkAction and @task.end_location.eql? @place
             @person.inventory.each do |item| 
               if item.name.eql? "Wood log"
                 @person.inventory.delete item
@@ -60,8 +60,8 @@ module Town
           @task = SawWoodAction.new
           @place.inventory.delete log
         else
-          @task = ActiveWalkAction.new(:end_location => @foresters_hut,
-                                       :thing => @person)
+          @task = WalkAction.new(:end_location => @foresters_hut,
+                                 :thing => @person)
         end
       end
     end
