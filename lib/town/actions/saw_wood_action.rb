@@ -1,16 +1,16 @@
 module Town
-  class ChopTreeAction < Action
-
+  class SawWoodAction < Action
+  
     attr_accessor :time_remaining
 
     def initialize(options = {})
-      super(:name => "Chop Tree",
+      super(:name => "Saw wood",
             :type => "active")
-      @time_remaining = 30
+      @time_remaining = 45
     end
 
     def to_s
-      "Chopping down a tree"
+      "Sawing wood"
     end
 
     def step

@@ -21,11 +21,18 @@ module Town
       @trees = init_trees(options[:trees_config])
       @rivers = init_rivers(options[:rivers_config])
 
-      #add the extra elements to the wood cutters
+      #add the extra elements to the proper job classes
       @people.each do |person|
         if person.job.is_a? Town::WoodCuttingJob
           person.job.person = person
           person.job.trees = @trees
+        elsif person.job.is_a? Town::SawyerJob
+          person.job.person = person
+          @places.each do |place|
+            if place.name.eql? "Foresters Hut"
+              person.job.foresters_hut = place
+            end
+          end
         end
       end
 
@@ -146,6 +153,8 @@ module Town
         job_roles_config.each_value do |job_role|
           if job_role["name"].eql? "Forester"
             new_job_role = WoodCuttingJob.new
+          elsif job_role["name"].eql? "Sawyer"
+            new_job_role = SawyerJob.new
           else
             new_job_role = JobRole.new
           end
