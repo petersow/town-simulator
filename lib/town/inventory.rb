@@ -30,5 +30,15 @@ module Town
       end
     end
 
+    def include?(item)
+      return number_of(item) > 0 ? true : false
+    end
+
+    def list
+      result = ""
+      @contents.each {|key, value| result += "#{key} is #{value}\n" }
+      return result
+    end
+
   end
 end

@@ -13,52 +13,44 @@ module Town
     end
 
     def step
+      @wood_log = Item.new(:name => "Wood log")
+      @plank = Item.new(:name => "Plank")
+
       if @task
         @task.step
 
         if @task.is_finished?
           if @task.is_a? WalkAction and @task.end_location.eql? @foresters_hut
             #Get a Wood log
-            @foresters_hut.inventory.each do |item|
-              if item.name.eql? "Wood log"
-                @foresters_hut.inventory.delete item
-                @person.inventory << item
-                break
-              end
+            if @foresters_hut.inventory.number_of(@wood_log) >= 1
+              @foresters_hut.inventory.remove(@wood_log, 1)
+              @person.inventory.add @wood_log
             end
-            @person.inventory.each do |item|
-              if item.name.eql? "Wood log"
-                @task = WalkAction.new(:end_location => @place,
-                                       :thing => @person)
-              end
+            if @person.inventory.include? @wood_log
+              @task = WalkAction.new(:end_location => @place,
+                                     :thing => @person)
             end
           elsif @task.is_a? WalkAction and @task.end_location.eql? @place
-            @person.inventory.each do |item| 
-              if item.name.eql? "Wood log"
-                @person.inventory.delete item
-                @place.inventory << item
-              end
+            if @person.inventory.include? @wood_log
+              @person.inventory.remove(@wood_log, 1)
+              @place.inventory.add @wood_log
             end
             @task = nil
           elsif @task.is_a? SawWoodAction
             @task = nil
-            @place.inventory << Item.new(:name => "Plank")
+            @place.inventory.add @plank
           end
         end
       else
         # Check for materials
         mats = false
-        log = nil
-        @place.inventory.each do |item|
-          if item.name.eql? "Wood log"
-            mats = true 
-            log = item
-          end
+        if @place.inventory.number_of(@wood_log) >= 1
+          mats = true 
         end
 
         if mats
           @task = SawWoodAction.new
-          @place.inventory.delete log
+          @place.inventory.remove(@wood_log, 1)
         else
           @task = WalkAction.new(:end_location => @foresters_hut,
                                  :thing => @person)

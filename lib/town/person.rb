@@ -9,7 +9,7 @@ module Town
       @first_name = options[:first_name] ||= ""
       @family_name = options[:family_name] ||= ""
       @date_of_birth = options[:date_of_birth] ||= Town::Time.new
-      @inventory = []
+      @inventory = Inventory.new
       # Self used because @ doesn't throw the exception
       self.bedtime_hour=(options[:bedtime_hour] ||= 23)
       self.wake_up_hour=(options[:wake_up_hour] ||= 7)

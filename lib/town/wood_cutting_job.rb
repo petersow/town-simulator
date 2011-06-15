@@ -9,11 +9,12 @@ module Town
       super(options)
       @trees = options[:trees] ||= []
       @person = options[:person]
-
       @task = nil
     end
 
     def step 
+      @wood_log = Item.new(:name => "Wood log")
+
       if @task
         @task.step
 
@@ -21,18 +22,16 @@ module Town
           if @task.is_a? WalkAction and @task.end_location.eql? @tree
             @task = ChopTreeAction.new
           elsif @task.is_a? WalkAction and @task.end_location.eql? @place
-            @person.inventory.each do |item|
-              if item.name.eql? "Wood log"
-                @person.inventory.delete item
-                @place.inventory << item
-              end
+            if @person.inventory.include? @wood_log
+              @person.inventory.remove(@wood_log, 1)
+              @place.inventory.add @wood_log
             end
             @task = WalkAction.new(:end_location => @tree,
                                    :thing => @person)
  
           elsif @task.is_a? ChopTreeAction
             # Should really make the action create this item
-            @person.inventory << Item.new(:name => "Wood log")
+            @person.inventory.add @wood_log
             @task = WalkAction.new(:end_location => @place,
                                    :thing => @person)
           else

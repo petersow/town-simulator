@@ -9,7 +9,7 @@ module Town
       @p_id = SecureRandom.uuid
       @name = options[:name] ||= ""
       @location = options[:location] ||= Location.new
-      @inventory = []
+      @inventory = Inventory.new
     end
   end
 end

@@ -52,9 +52,6 @@ loop do
          "(#{person.location.x},#{person.location.y}," +
          "#{person.location.z})\n"
     puts "#{person.first_name} #{person.family_name} is #{person.current_action}.\n"
-    person.inventory.each do |item|
-      puts "\t carrying #{item.name}"
-    end
   end
   sleep 0.05
 end
