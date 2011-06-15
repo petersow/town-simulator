@@ -21,6 +21,7 @@ Jeweler::Tasks.new do |s|
   s.summary = %q{Lib for simulating the people in a Town}
   s.files = %w[README Rakefile town.gemspec]
   s.files += Dir['lib/*.rb'] + Dir['lib/town/*.rb'] + Dir['spec/*.rb'] + Dir['lib/town/actions/*.rb'] 
+  s.files += Dir['lib/helpers/*.rb']
   s.executables = ["town"]
   # dependencies defined in Gemfile
 end

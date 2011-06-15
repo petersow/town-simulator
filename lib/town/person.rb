@@ -24,7 +24,6 @@ module Town
     def should_go_to_work?(mins)
       # find distance from home to work
       time_to_travel = @location.distance(job.place.location)
-      puts "Results [#{time_to_travel}]"
       # look at time, if no time left then go
       if 60.to_i-mins > time_to_travel
         false

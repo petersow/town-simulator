@@ -26,6 +26,7 @@ module Town
             end
           end
           if thing.current_action.is_a? WorkAction
+            thing.current_action.step
             if @time.hour >= thing.job.end_hour and @time.hour < thing.job.end_hour+1
               return ActiveWalkAction.new(:end_location => thing.home, :thing => thing)
             end

@@ -6,75 +6,54 @@ require 'yaml'
 
 require 'town'
 
-Ncurses.initscr
-Ncurses.cbreak # provide unbuffered input
-Ncurses.noecho # turn off input echoing
-Ncurses.nonl # turn off newline translation
 
-screen = Ncurses.stdscr
-
-screen.intrflush(false) # turn off flush-on-interrupt
-screen.keypad(true) # turn on keypad mode
-
-screen.addstr("Welcome to the Town!")
-screen.addstr("\n\npress any key to start.")
-screen.getch
+puts("Welcome to the Town!")
+puts("\n\npress any key to start.\n")
 
 @people_config = YAML::load(File.open('example/people.yaml'))
 @places_config = YAML::load(File.open('example/places.yaml'))
 @job_roles_config = YAML::load(File.open('example/job_roles.yaml'))
+@trees_config = YAML::load(File.open('example/trees.yaml'))
 
 engine = Town::Engine.new(:people_config => @people_config,
                           :places_config => @places_config,
-                          :job_roles_config => @job_roles_config)
+                          :job_roles_config => @job_roles_config,
+                          :trees_config => @trees_config)
 
-screen.clear
-screen.addstr "Loaded #{engine.places.size} #{engine.places.size > 1 ? "places" : "place"}.\n"
+puts "Loaded #{engine.places.size} #{engine.places.size > 1 ? "places" : "place"}.\n"
 engine.places.each do |place|
-  screen.addstr "#{place.name} is at (#{place.location.x}," +
+  puts "#{place.name} is at (#{place.location.x}," +
                 "#{place.location.y},#{place.location.z})\n"
 end
-screen.addstr("\n\npress any key to continue.")
-screen.refresh
-screen.getch
+puts("\n\npress any key to continue.")
 
-screen.clear
-screen.addstr "Loaded #{engine.job_roles.size} #{engine.job_roles.size > 1 ? "Job roles" : "Job role"}.\n"
+puts "Loaded #{engine.job_roles.size} #{engine.job_roles.size > 1 ? "Job roles" : "Job role"}.\n"
 engine.job_roles.each do |job_role|
-  screen.addstr "#{job_role.name} is at #{job_role.place.name}"
+  puts "#{job_role.name} is at #{job_role.place.name}"
 end
-screen.addstr("\n\npress any key to continue.")
-screen.refresh
-screen.getch
+puts("\n\npress any key to continue.")
 
-screen.clear
-screen.addstr "Loaded #{engine.people.size} #{engine.people.size > 1 ? "people" : "person"}.\n"
+puts "Loaded #{engine.people.size} #{engine.people.size > 1 ? "people" : "person"}.\n"
 engine.people.each do |person|
-  screen.addstr "#{person.first_name} #{person.family_name} is at " +
+  puts "#{person.first_name} #{person.family_name} is at " +
                 "(#{person.location.x},#{person.location.y}," +
                 "#{person.location.z})\n"
 end
 
-screen.addstr("\n\npress any key to continue.")
-screen.getch
-screen.refresh
-
+puts("\n\npress any key to continue.\n")
 
 loop do
-  screen.getch
   engine.tick
-  screen.clear
-  output = "#{engine.clock}\n"
+  puts "#{engine.clock}\n"
 
   engine.people.each do |person|
-    output += "#{person.first_name} #{person.family_name} is at " +
+    puts "#{person.first_name} #{person.family_name} is at " +
          "(#{person.location.x},#{person.location.y}," +
          "#{person.location.z})\n"
-    output += "#{person.first_name} #{person.family_name} is #{person.current_action}.\n"
+    puts "#{person.first_name} #{person.family_name} is #{person.current_action}.\n"
   end
-  screen.addstr output
-  screen.refresh
-#  sleep 0.05
+#  puts output
+  sleep 0.05
 end
 
 

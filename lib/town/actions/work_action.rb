@@ -17,5 +17,11 @@ module Town
       true
     end
 
+    def step
+      if @job_role.is_a? Town::WoodCuttingJob
+        @job_role.step
+      end
+    end
+
   end
 end

@@ -7,5 +7,9 @@ module Town
       @name = "Tree"
     end
 
+    def name
+      "Tree"
+    end
+
   end
 end

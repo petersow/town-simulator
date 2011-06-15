@@ -3,7 +3,7 @@ require 'town/clock'
 module Town
   class Engine
 
-    attr_accessor :seconds_to_run
+    attr_accessor :seconds_to_run, :trees
     attr_reader :people, :places, :job_roles, :clock
 
     FOREVER = -1
@@ -17,6 +17,16 @@ module Town
       @places = init_places(options[:places_config])
       @job_roles = init_job_roles(options[:job_roles_config])
       @people = init_people(options[:people_config])
+
+      @trees = init_trees(options[:trees_config])
+
+      #add the extra elements to the wood cutters
+      @people.each do |person|
+        if person.job.is_a? Town::WoodCuttingJob
+          person.job.person = person
+          person.job.trees = @trees
+        end
+      end
 
       @action_generator = ActionGenerator.new
       @options[:sleep_time] = 0.05
@@ -133,7 +143,11 @@ module Town
       result = []
       if job_roles_config
         job_roles_config.each_value do |job_role|
-          new_job_role = JobRole.new
+          if job_role["name"].eql? "Forester"
+            new_job_role = WoodCuttingJob.new
+          else
+            new_job_role = JobRole.new
+          end
           job_role.each_pair do |key, value|
             begin 
               if key.eql? "place"
@@ -151,6 +165,16 @@ module Town
         end
       end
       result
+    end
+
+    def init_trees(trees)
+      result = []
+      trees.values.each do |tree|
+        loc = tree["location"]
+        loc = Town::Location.new(:x => loc["x"], :y => loc["y"], :z => loc["z"])
+        result << Town::Tree.new(:location => loc)
+      end
+      return result
     end
 
   end

@@ -12,5 +12,6 @@ module Town
       @end_hour = options[:end_hour] ||= 17
       @place = options[:place]
     end
+
   end
 end

@@ -1,0 +1,89 @@
+tree_one:
+  location:
+    x: 18
+    y: 0
+    z: 1
+
+tree_two:
+  location:
+    x: 18
+    y: 0
+    z: 2
+
+tree_three:
+  location:
+    x: 19
+    y: 0
+    z: 1
+
+tree_four:
+  location:
+    x: 19
+    y: 0
+    z: 2
+
+tree_five:
+  location:
+    x: 19
+    y: 0
+    z: 3
+
+tree_six:
+  location:
+    x: 20
+    y: 0
+    z: 2
+
+tree_seven:
+  location:
+    x: 20
+    y: 0
+    z: 3
+
+tree_eight:
+  location:
+    x: 20
+    y: 0
+    z: 4
+
+tree_nine:
+  location:
+    x: 20
+    y: 0
+    z: 5
+
+tree_ten:
+  location:
+    x: 21
+    y: 0
+    z: 1
+
+tree_eleven:
+  location:
+    x: 21
+    y: 0
+    z: 2
+
+tree_twelve:
+  location:
+    x: 21
+    y: 0
+    z: 3
+
+tree_thriteen:
+  location:
+    x: 21
+    y: 0
+    z: 4
+
+tree_fourteen:
+  location:
+    x: 21
+    y: 0
+    z: 5
+
+tree_fifteen:
+  location:
+    x: 21
+    y: 0
+    z: 6

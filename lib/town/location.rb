@@ -12,18 +12,15 @@ module Town
       x = distance_i(@x, other.x) 
       y = distance_i(@z, other.z) 
       z = distance_i(@z, other.z) 
-      puts "#{x} #{y} #{z}"
-      if x > y and x > z
-        return x
+
+      result = x
+      if y > result
+        result = y
       end
-      if y > x and y > z
-        return y
+      if z > result
+        result = z
       end
-      if z > y and z > x
-        return z
-      end
-      # All must be equal
-      return x
+      return result
     end
 
     def distance_i(a, b)
