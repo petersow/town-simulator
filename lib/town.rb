@@ -10,6 +10,7 @@ require 'town/job_role'
 require 'town/river'
 require 'town/place'
 require 'town/item'
+require 'town/inventory'
 
 require 'town/actions/action'
 require 'town/actions/idle_action'
