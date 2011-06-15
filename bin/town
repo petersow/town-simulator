@@ -14,11 +14,13 @@ puts("\n\npress any key to start.\n")
 @places_config = YAML::load(File.open('example/places.yaml'))
 @job_roles_config = YAML::load(File.open('example/job_roles.yaml'))
 @trees_config = YAML::load(File.open('example/trees.yaml'))
+@rivers_config = YAML::load(File.open('example/rivers.yaml'))
 
 engine = Town::Engine.new(:people_config => @people_config,
                           :places_config => @places_config,
                           :job_roles_config => @job_roles_config,
-                          :trees_config => @trees_config)
+                          :trees_config => @trees_config,
+                          :rivers_config => @rivers_config)
 
 puts "Loaded #{engine.places.size} #{engine.places.size > 1 ? "places" : "place"}.\n"
 engine.places.each do |place|

@@ -2,7 +2,7 @@
 module Town
   class Tree < Thing
 
-    def initalize(options = {})
+    def initialize(options = {})
       super(options)
       @name = "Tree"
     end

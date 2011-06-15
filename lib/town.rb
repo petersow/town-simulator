@@ -7,6 +7,7 @@ require 'town/time'
 require 'town/tree'
 require 'town/action_generator'
 require 'town/job_role'
+require 'town/river'
 require 'town/place'
 
 require 'town/actions/action'

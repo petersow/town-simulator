@@ -3,7 +3,7 @@ require 'town/clock'
 module Town
   class Engine
 
-    attr_accessor :seconds_to_run, :trees
+    attr_accessor :seconds_to_run, :trees, :rivers
     attr_reader :people, :places, :job_roles, :clock
 
     FOREVER = -1
@@ -19,6 +19,7 @@ module Town
       @people = init_people(options[:people_config])
 
       @trees = init_trees(options[:trees_config])
+      @rivers = init_rivers(options[:rivers_config])
 
       #add the extra elements to the wood cutters
       @people.each do |person|
@@ -177,5 +178,20 @@ module Town
       return result
     end
 
+    def init_rivers(rivers)
+      result = []
+      rivers.values.each do |river|
+        blocks = []
+        river.values.each do |block|
+          loc = block["location"]
+          loc = Town::Location.new(:x => loc["x"], :y => loc["y"], :z => loc["z"])
+          river_block = Thing.new(:location => loc)
+          blocks << river_block
+        end
+        river = River.new(:area => blocks)
+        result << River.new(:area => blocks)
+      end
+      return result
+    end
   end
 end

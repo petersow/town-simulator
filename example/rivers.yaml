@@ -1,0 +1,86 @@
+river_one:
+  block_one:
+    location:
+      x: 8
+      y: 0
+      z: 12
+  block_two:
+    location:
+      x: 9
+      y: 0
+      z: 12
+  block_three:
+    location:
+      x: 10
+      y: 0
+      z: 12
+  block_four:
+    location:
+      x: 11
+      y: 0
+      z: 12
+  block_five:
+    location:
+      x: 12
+      y: 0
+      z: 12
+  block_six:
+    location:
+      x: 13
+      y: 0
+      z: 12
+  block_seven:
+    location:
+      x: 14
+      y: 0
+      z: 12
+  block_eight:
+    location:
+      x: 15
+      y: 0
+      z: 12
+  block_nine:
+    location:
+      x: 16
+      y: 0
+      z: 12
+  block_ten:
+    location:
+      x: 17
+      y: 0
+      z: 12
+  block_eleven:
+    location:
+      x: 18
+      y: 0
+      z: 12
+  block_twelve:
+    location:
+      x: 19
+      y: 0
+      z: 12
+  block_thriteen:
+    location:
+      x: 19
+      y: 0
+      z: 11
+  block_fourteen:
+    location:
+      x: 20
+      y: 0
+      z: 11
+  block_fifteen:
+    location:
+      x: 21
+      y: 0
+      z: 11
+  block_sixteen:
+    location:
+      x: 21
+      y: 0
+      z: 10
+  block_seventeen:
+    location:
+      x: 22
+      y: 0
+      z: 10
