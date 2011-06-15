@@ -19,7 +19,8 @@ module Town
 
     def step
       if @job_role.is_a? Town::WoodCuttingJob or 
-         @job_role.is_a? Town::SawyerJob
+         @job_role.is_a? Town::SawyerJob or
+         @job_role.is_a? Town::CarpenteryJob
         @job_role.step
       end
     end

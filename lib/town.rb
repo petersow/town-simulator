@@ -21,6 +21,10 @@ require 'town/actions/work_action'
 require 'town/actions/walk_action'
 require 'town/actions/chop_tree_action'
 require 'town/actions/saw_wood_action'
+require 'town/actions/buy_item_action'
+require 'town/actions/craft_table_action'
+
 
 require 'town/wood_cutting_job'
 require 'town/sawyer_job'
+require 'town/carpentery_job'

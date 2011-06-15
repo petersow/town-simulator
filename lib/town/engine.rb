@@ -33,6 +33,13 @@ module Town
               person.job.foresters_hut = place
             end
           end
+        elsif person.job.is_a? Town::CarpenteryJob
+          person.job.person = person
+          @places.each do |place|
+            if place.name.eql? "Lumber Mill"
+              person.job.lumber_mill = place
+            end
+          end
         end
       end
 
@@ -155,6 +162,8 @@ module Town
             new_job_role = WoodCuttingJob.new
           elsif job_role["name"].eql? "Sawyer"
             new_job_role = SawyerJob.new
+          elsif job_role["name"].eql? "Carpenter"
+            new_job_role = CarpenteryJob.new
           else
             new_job_role = JobRole.new
           end
