@@ -34,3 +34,8 @@ job_role_six:
   end_hour: 17
   place: Lumber Mill
 
+job_role_seven:
+  name: Carpenter
+  start_hour: 9
+  end_hour: 17
+  place: Carpenters

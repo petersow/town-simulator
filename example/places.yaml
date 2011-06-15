@@ -40,6 +40,13 @@ place_six:
     y: 0
     z: 2
 
+place_seven:
+  name: Carpenters
+  location:
+    x: 8
+    y: 0
+    z: 7
+
 house_one:
   name: House one
   location:
@@ -107,5 +114,12 @@ house_ten:
   name: House ten
   location:
     x: 17
+    y: 0
+    z: 8
+
+house_eleven:
+  name: House eleven
+  location:
+    x: 19
     y: 0
     z: 8

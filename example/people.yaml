@@ -86,3 +86,12 @@ man_ten:
   wake_up_hour: 4
   job: Farmer
   home: House ten
+
+man_elven:
+  first_name: Boris
+  family_name: Crafter
+  date_of_birth: 00:00 01/01/1
+  bedtime_hour: 23
+  wake_up_hour: 8
+  job: Carpenter
+  home: House eleven
