@@ -2,13 +2,15 @@ A ruby library to simulate a town.
 
 Requires ruby 1.9.2
 
+--- SPEC FAIL. MIGHT NOT FIX --
+ 
 Run rspec spec to check everythings working on your machine.
 
 Run ./bin/town to run example use of library.
 
 Or to install the library as a gem for use with other projects do the following
 
-rake
-gem install pkg/town-core-0.0.1.gem
+rake install
 
-now running "town" on your box should start the example run.
+After install running "town" on your box should start the example run.
+This is largely for debugging. See the king-sim project for a more visual experiance.
