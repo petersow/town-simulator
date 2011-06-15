@@ -1,0 +1,35 @@
+wood_log:
+  name: Wood Log
+
+plank:
+  name: Plank
+
+bow:
+  name: bow
+
+arrow_shaft:
+  name: Arrow Shaft
+
+arrow_head:
+  name: Arrow Head
+
+arrow:
+  name: Arrow
+
+charcoal:
+  name: Charcoal
+
+iron_ore:
+  name: Iron Ore
+
+iron_bar:
+  name: Iron Bar
+
+iron_helm:
+  name: Iron Helm
+
+iron_sword:
+  name: Iron Sword
+
+iron_armour:
+  name: Iron Armour

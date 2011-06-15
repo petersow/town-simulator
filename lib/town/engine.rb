@@ -9,6 +9,13 @@ module Town
     FOREVER = -1
 
     def initialize(options = {})
+      @context = Hash.new
+
+      items = YAML::load(File.open('example/items.yaml'))
+      items = init_items(items)
+
+      @context[:items] = items
+
       @messenger = options[:messenger] || STDOUT
       @clock = options[:clock] ||= Clock.new
       @seconds_to_run = options[:seconds_to_run] ||= FOREVER
@@ -94,6 +101,21 @@ module Town
 
     protected
 
+    def init_items(item_config)
+      result = Hash.new
+      if item_config
+        item_config.each do |obj_name, values|
+          new_item = Item.new
+
+          values.each do |key, value|
+            new_item.send "#{key}=", value
+          end
+          result[obj_name.to_sym] = new_item
+        end
+      end
+      result
+    end
+
     def init_people(people_config)
       result = []
       if people_config
@@ -159,9 +181,9 @@ module Town
       if job_roles_config
         job_roles_config.each_value do |job_role|
           if job_role["name"].eql? "Forester"
-            new_job_role = WoodCuttingJob.new
+            new_job_role = WoodCuttingJob.new @context
           elsif job_role["name"].eql? "Sawyer"
-            new_job_role = SawyerJob.new
+            new_job_role = SawyerJob.new @context
           elsif job_role["name"].eql? "Carpenter"
             new_job_role = CarpenteryJob.new
           else
