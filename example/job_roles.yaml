@@ -28,3 +28,9 @@ job_role_five:
   end_hour: 17
   place: Market Stall
 
+job_role_six:
+  name: Sawyer
+  start_hour: 9
+  end_hour: 17
+  place: Lumber Mill
+

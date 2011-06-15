@@ -33,6 +33,13 @@ place_five:
     y: 0
     z: 3
 
+place_six:
+  name: Lumber Mill
+  location:
+    x: 14
+    y: 0
+    z: 2
+
 house_one:
   name: House one
   location:

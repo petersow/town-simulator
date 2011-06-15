@@ -29,9 +29,9 @@ man_four:
   first_name: James
   family_name: Burke
   date_of_birth: 00:00 01/01/1
-  bedtime_hour: 22
-  wake_up_hour: 4
-  job: Farmer
+  bedtime_hour: 23
+  wake_up_hour: 7
+  job: Sawyer
   home: House four
 
 man_five:
